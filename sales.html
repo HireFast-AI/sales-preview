@@ -943,6 +943,236 @@
         display: none;
       }
 
+      /* --- Pipeline density toggle --- */
+      .density-toggle {
+        display: inline-flex;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px;
+        gap: 2px;
+      }
+      .density-toggle button {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--muted);
+      }
+      .density-toggle button.active {
+        background: var(--ink);
+        color: white;
+      }
+      .pipeline-compact .lead-card {
+        padding: 10px;
+        margin-bottom: 6px;
+        border-radius: 14px;
+      }
+      .pipeline-compact .lead-card .font-semibold {
+        font-size: 0.84rem;
+        margin-bottom: 2px;
+      }
+      .pipeline-compact .lead-card .text-\[0\.78rem\] {
+        display: none;
+      }
+      .pipeline-compact .lead-card .avatar-sm,
+      .pipeline-compact .lead-card [data-source-chip] {
+        display: none;
+      }
+      .pipeline-compact .lead-card [data-services] {
+        display: none;
+      }
+
+      /* --- Ricerca compact list --- */
+      .ricerca-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition:
+          box-shadow 0.15s,
+          transform 0.15s;
+        flex-wrap: wrap;
+      }
+      .ricerca-row:hover {
+        box-shadow: 0 8px 22px -10px rgba(14, 16, 28, 0.12);
+      }
+      .ricerca-row.expanded {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .ricerca-row .rr-expanded {
+        display: none;
+        width: 100%;
+        padding-top: 12px;
+        border-top: 1px dashed var(--line);
+        margin-top: 8px;
+      }
+      .ricerca-row.expanded .rr-expanded {
+        display: block;
+      }
+      .ricerca-row .rr-chev {
+        transition: transform 0.2s;
+      }
+      .ricerca-row.expanded .rr-chev {
+        transform: rotate(180deg);
+      }
+
+      /* --- Alert Team --- */
+      .alert-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 18px 20px;
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 24px;
+      }
+      .alert-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 12px;
+        bottom: 12px;
+        width: 4px;
+        border-radius: 0 6px 6px 0;
+      }
+      .alert-card.sev-critical::before {
+        background: var(--red);
+      }
+      .alert-card.sev-high::before {
+        background: var(--orange);
+      }
+      .alert-card.sev-medium::before {
+        background: var(--yellow);
+      }
+      .alert-card.sev-low::before {
+        background: var(--teal);
+      }
+
+      /* --- Pulse for urgent chips --- */
+      @keyframes softPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(180, 35, 24, 0);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(180, 35, 24, 0.15);
+        }
+      }
+      .chip-pulse {
+        animation: softPulse 2.2s ease-in-out infinite;
+      }
+
+      /* --- Meet-link modal bits --- */
+      .provider-radio {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        margin-bottom: 8px;
+      }
+      .provider-radio input {
+        accent-color: var(--teal);
+      }
+      .provider-radio:hover {
+        border-color: var(--line-strong);
+      }
+      .provider-radio.selected {
+        border-color: var(--ink);
+        background: rgba(14, 16, 28, 0.02);
+      }
+
+      /* --- Toast --- */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--ink);
+        color: white;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+
+      /* --- Geo breadcrumb nav --- */
+      .geo-crumbs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .geo-crumbs a {
+        color: var(--teal);
+        cursor: pointer;
+      }
+      .geo-crumbs a:hover {
+        text-decoration: underline;
+      }
+
+      /* --- Quote modal fullscreen --- */
+      .quote-wizard {
+        padding: 26px;
+        max-width: 720px;
+      }
+      .template-picker {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .template-picker label {
+        border: 1px solid var(--line);
+        padding: 14px;
+        border-radius: 16px;
+        cursor: pointer;
+        display: block;
+      }
+      .template-picker label.selected {
+        border-color: var(--ink);
+        background: rgba(14, 16, 28, 0.02);
+      }
+
+      /* --- Template email list --- */
+      .tpl-row {
+        padding: 12px 14px;
+        border-radius: 14px;
+        cursor: pointer;
+        margin-bottom: 4px;
+      }
+      .tpl-row:hover {
+        background: var(--bg);
+      }
+      .tpl-row.selected {
+        background: var(--teal-soft);
+      }
+
       /* Small helper: touch feedback */
       @media (hover: none) {
         .btn-primary:active,
@@ -1367,6 +1597,12 @@
           width: 38px;
           height: 38px;
         }
+        /* Breakdown 7-card: enable horizontal scroll on mobile */
+        .geo-breakdown-grid {
+          grid-auto-flow: column !important;
+          grid-template-columns: none !important;
+          grid-auto-columns: 70vw !important;
+        }
         .card.p-5 {
           padding: 16px !important;
         }
@@ -1753,6 +1989,29 @@
         </a>
         <a
           class="sidenav-item director-only"
+          data-wf="wf-alert-team"
+          href="#wf-alert-team"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+            <path d="M10 21a2 2 0 0 0 4 0" />
+            <circle cx="18" cy="6" r="3" fill="currentColor" stroke="none" />
+          </svg>
+          <span>Alert Team</span
+          ><span class="badge badge-red" id="alert-team-badge">5</span>
+        </a>
+        <a
+          class="sidenav-item director-only"
           data-wf="wf-provvigioni-pod"
           href="#wf-provvigioni-pod"
         >
@@ -1817,8 +2076,8 @@
         </a>
         <a
           class="sidenav-item"
-          data-wf="wf-generatore-email"
-          href="#wf-generatore-email"
+          data-wf="wf-template-email"
+          href="#wf-template-email"
         >
           <svg
             width="20"
@@ -1831,11 +2090,11 @@
             stroke-linejoin="round"
             aria-hidden="true"
           >
-            <path d="M4 20h4l10-10-4-4L4 16z" />
-            <path d="M14 6l4 4" />
-            <path d="M20 20h-6" />
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3 7 9 6 9-6" />
+            <path d="M7 14h4" />
           </svg>
-          <span>Generatore email</span>
+          <span>Template email</span>
         </a>
 
         <div class="flex-1"></div>
@@ -2190,6 +2449,9 @@
           <section id="wf-performance-pod" class="wf-section">
             <div class="pageshell" id="performance-content"></div>
           </section>
+          <section id="wf-alert-team" class="wf-section">
+            <div class="pageshell" id="alert-team-content"></div>
+          </section>
           <section id="wf-provvigioni-pod" class="wf-section">
             <div class="pageshell" id="provvigioni-content"></div>
           </section>
@@ -2203,8 +2465,8 @@
           <section id="wf-ai-copilot" class="wf-section">
             <div class="pageshell" id="aicopilot-content"></div>
           </section>
-          <section id="wf-generatore-email" class="wf-section">
-            <div class="pageshell" id="generatore-content"></div>
+          <section id="wf-template-email" class="wf-section">
+            <div class="pageshell" id="template-email-content"></div>
           </section>
           <section id="wf-admin" class="wf-section">
             <div class="pageshell" id="admin-content"></div>
@@ -5132,6 +5394,10 @@
           stale_leads_14d: 2,
           unread_messages: 5,
           pending_quotes: 5,
+          new_leads_assigned_today: 3,
+          stale_leads_count: 2,
+          clients_in_offerta: 5,
+          clients_attesa_contratto: 2,
           actions_priority: [
             {
               id: "ap-critical-1",
@@ -5177,9 +5443,1377 @@
           ],
         };
 
+        // ============================================================================
+        // CASE STUDIES (6)
+        // ============================================================================
+        const case_studies = [
+          {
+            id: "cs-001",
+            title: "15 camerieri assunti in 20 giorni per ristoranti Milano",
+            summary:
+              "Gruppo di 3 sedi in centro Milano doveva riaprire dopo ristrutturazione con staff nuovo. Con campagne Meta geo-localizzate e filtro su esperienza >1 anno abbiamo chiuso 15 assunzioni in 20 giorni, 38% under 30, turnover a 6 mesi sotto il 12%.",
+            sector: "Ristorazione",
+            region: "Lombardia",
+            city: "Milano",
+            external_url:
+              "https://hirefast.it/casi-studio/ristorazione-milano-15-camerieri",
+            thumbnail_url:
+              "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800",
+            published_at: "2026-03-15T00:00:00.000Z",
+            is_featured: true,
+            company_name_public: "Catena ristoranti Milano centro",
+          },
+          {
+            id: "cs-002",
+            title: "40 magazzinieri in 6 mesi per hub logistico Padova",
+            summary:
+              "Hub logistico in forte espansione doveva ricoprire 40 posizioni su 3 turni in 6 mesi. Funnel multicanale (Meta + Indeed + referral bonus 300€) con video-intervista asincrona. Time-to-hire medio 11 giorni, tasso di presentazione in azienda 94%.",
+            sector: "Logistica",
+            region: "Veneto",
+            city: "Padova",
+            external_url:
+              "https://hirefast.it/casi-studio/logistica-padova-40-magazzinieri",
+            thumbnail_url:
+              "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800",
+            published_at: "2026-02-20T00:00:00.000Z",
+            is_featured: true,
+            company_name_public: "Hub logistico Padova",
+          },
+          {
+            id: "cs-003",
+            title: "8 commesse premium in 2 settimane per boutique Firenze",
+            summary:
+              "Boutique multi-brand voleva rinforzare il team vendita per la stagione primavera. Target: commesse con background moda e attitudine premium. Portati 8 profili validati in 14 giorni, 6 assunzioni, 2 riserve.",
+            sector: "Retail Fashion",
+            region: "Toscana",
+            city: "Firenze",
+            external_url:
+              "https://hirefast.it/casi-studio/retail-firenze-8-commesse",
+            thumbnail_url:
+              "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800",
+            published_at: "2026-01-10T00:00:00.000Z",
+            is_featured: false,
+            company_name_public: "Boutique multi-brand Firenze",
+          },
+          {
+            id: "cs-004",
+            title: "12 operatori CRM ecommerce in 3 settimane — Bologna",
+            summary:
+              "Ecommerce elettronica doveva coprire customer care H24 per Black Friday. Campagne geo-mirate su laureati STEM + screening con test pratico. 12 assunzioni concluse in 21 giorni, NPS interno 78.",
+            sector: "Ecommerce",
+            region: "Emilia-Romagna",
+            city: "Bologna",
+            external_url:
+              "https://hirefast.it/casi-studio/ecommerce-bologna-12-crm",
+            thumbnail_url:
+              "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+            published_at: "2025-11-28T00:00:00.000Z",
+            is_featured: false,
+            company_name_public: "Ecommerce elettronica Bologna",
+          },
+          {
+            id: "cs-005",
+            title: "5 pizzaioli napoletani certificati in 10 giorni — Roma",
+            summary:
+              "Pizzeria gourmet in apertura cercava pizzaioli con verace tradizione napoletana. Scouting nel network campano + relocation bonus. 5 chef assunti in 10 giorni, tutti con almeno 5 anni esperienza in forno a legna.",
+            sector: "Ristorazione",
+            region: "Lazio",
+            city: "Roma",
+            external_url:
+              "https://hirefast.it/casi-studio/ristorazione-roma-5-pizzaioli",
+            thumbnail_url:
+              "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+            published_at: "2025-10-02T00:00:00.000Z",
+            is_featured: true,
+            company_name_public: "Pizzeria gourmet Roma",
+          },
+          {
+            id: "cs-006",
+            title: "30 receptionist stagionali per hotel 4* a Verona",
+            summary:
+              "Catena hotel ha coperto la stagione estiva con 30 receptionist in 2 mesi su 4 strutture. Screening lingua (IT/EN/DE) + test simulazione checkin. Zero no-show, 87% completion stagione.",
+            sector: "Hospitality",
+            region: "Veneto",
+            city: "Verona",
+            external_url:
+              "https://hirefast.it/casi-studio/hospitality-verona-30-receptionist",
+            thumbnail_url:
+              "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+            published_at: "2025-06-18T00:00:00.000Z",
+            is_featured: false,
+            company_name_public: "Hotel 4 stelle Verona",
+          },
+        ];
+
+        // ============================================================================
+        // TEAM ALERTS (12) — solo POD Director Milano Alpha
+        // ============================================================================
+        const team_alerts = [
+          {
+            id: "ta-001",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-marco-004",
+            target_user_name: "Marco Ricci",
+            lead_id: "l-015",
+            company_name: "Hotel Belvedere & Spa",
+            alert_type: "stale_proposal",
+            severity: "critical",
+            title: "Proposta ferma da 10 giorni",
+            message:
+              "La proposta flash staff stagionale (18K€) è stata inviata 10gg fa senza follow-up. Cliente con urgenza critica apertura 15 maggio.",
+            threshold_value: 10,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 0),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-002",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-marco-004",
+            target_user_name: "Marco Ricci",
+            lead_id: null,
+            company_name: null,
+            alert_type: "overdue_appointment",
+            severity: "critical",
+            title: "3 appuntamenti non aggiornati",
+            message:
+              "Marco ha 3 call passate senza outcome. Serve aggiornamento entro fine giornata.",
+            threshold_value: 3,
+            threshold_unit: "count",
+            triggered_at: daysAgo(0, 8, 5),
+            acknowledged_at: daysAgo(0, 9, 10),
+            resolved_at: null,
+          },
+          {
+            id: "ta-003",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-luca-002",
+            target_user_name: "Luca Ferrari",
+            lead_id: "l-007",
+            company_name: "Elettrodomestici Casa SRL",
+            alert_type: "missed_follow_up",
+            severity: "critical",
+            title: "Follow-up saltato (soglia 7gg superata)",
+            message:
+              "Lead qualificata con budget 8K/mese non riceve commenti da 7 giorni. Richiesta call closer entro oggi.",
+            threshold_value: 7,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 7, 30),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-004",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-chiara-003",
+            target_user_name: "Chiara Colombo",
+            lead_id: "l-014",
+            company_name: "Logistica Veloce SRL",
+            alert_type: "stale_proposal",
+            severity: "high",
+            title: "Deal 90K in attesa da 6 giorni",
+            message:
+              "Quote 15K/mese x 6 mesi inviata, silenzio post-CDA. Sollecitare con case study logistica.",
+            threshold_value: 6,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 10),
+            acknowledged_at: daysAgo(0, 9, 0),
+            resolved_at: null,
+          },
+          {
+            id: "ta-005",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-marco-004",
+            target_user_name: "Marco Ricci",
+            lead_id: "l-012",
+            company_name: "Bellezza&Co Beauty Salon",
+            alert_type: "lead_not_contacted",
+            severity: "high",
+            title: "Lead non contattata da 6 giorni",
+            message:
+              "Lead closer_appointment senza attività: rischio di perdere il deal (1K€/mese).",
+            threshold_value: 6,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 15),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-006",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-luca-002",
+            target_user_name: "Luca Ferrari",
+            lead_id: "l-005",
+            company_name: "Mobili Legno Design SRL",
+            alert_type: "lead_not_contacted",
+            severity: "high",
+            title: "Lead qualificata ferma da 6 giorni",
+            message:
+              "Budget doppio servizio confermato ma nessun messaggio negli ultimi 6gg. Inviare proposta.",
+            threshold_value: 6,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 20),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-007",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-chiara-003",
+            target_user_name: "Chiara Colombo",
+            lead_id: "l-017",
+            company_name: "ModaChic Boutique SRL",
+            alert_type: "missed_follow_up",
+            severity: "high",
+            title: "Negoziazione senza aggiornamento da 5 giorni",
+            message:
+              "Cliente chiede -10%. Chiarire con direttore e rispondere entro oggi.",
+            threshold_value: 5,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 25),
+            acknowledged_at: daysAgo(0, 9, 30),
+            resolved_at: null,
+          },
+          {
+            id: "ta-008",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-marco-004",
+            target_user_name: "Marco Ricci",
+            lead_id: null,
+            company_name: null,
+            alert_type: "lead_unworked",
+            severity: "medium",
+            title: "4 lead stale totali su 8 assegnate",
+            message:
+              "50% delle lead di Marco è sopra soglia follow-up. Coaching 1:1 consigliato.",
+            threshold_value: 50,
+            threshold_unit: "percent",
+            triggered_at: daysAgo(1, 8, 0),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-009",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-chiara-003",
+            target_user_name: "Chiara Colombo",
+            lead_id: "l-005",
+            company_name: "Mobili Legno Design SRL",
+            alert_type: "lead_unworked",
+            severity: "medium",
+            title: "Nessuna call pianificata nei prossimi 3gg",
+            message:
+              "Nonostante sia qualificata, la lead non ha appuntamento in agenda. Fissarlo.",
+            threshold_value: 3,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 30),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-010",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-luca-002",
+            target_user_name: "Luca Ferrari",
+            lead_id: "l-022",
+            company_name: "B&B Case Vacanza Toscane",
+            alert_type: "missed_follow_up",
+            severity: "medium",
+            title: "Lead postponed rivedere a giugno",
+            message:
+              "Reminder automatico: contattare Beatrice a metà maggio per stagione alta.",
+            threshold_value: 60,
+            threshold_unit: "days",
+            triggered_at: daysAgo(2, 9, 0),
+            acknowledged_at: daysAgo(1, 14, 0),
+            resolved_at: null,
+          },
+          {
+            id: "ta-011",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-marco-004",
+            target_user_name: "Marco Ricci",
+            lead_id: "l-001",
+            company_name: "Trattoria Da Giovanni SRL",
+            alert_type: "lead_not_contacted",
+            severity: "low",
+            title: "Nuova lead non ancora lavorata",
+            message:
+              "Lead arrivata 2gg fa, ancora status 'new'. Fissare setter call.",
+            threshold_value: 2,
+            threshold_unit: "days",
+            triggered_at: daysAgo(0, 8, 40),
+            acknowledged_at: null,
+            resolved_at: null,
+          },
+          {
+            id: "ta-012",
+            pod_team_name: "Milano Alpha",
+            target_user_id: "u-chiara-003",
+            target_user_name: "Chiara Colombo",
+            lead_id: null,
+            company_name: null,
+            alert_type: "lead_unworked",
+            severity: "low",
+            title: "Tempo medio qualify sopra baseline",
+            message:
+              "Avg time-to-qualify 22h vs baseline 18h. Rivedere priorità nel planner.",
+            threshold_value: 22,
+            threshold_unit: "hours",
+            triggered_at: daysAgo(1, 8, 0),
+            acknowledged_at: daysAgo(1, 10, 0),
+            resolved_at: null,
+          },
+        ];
+
+        // ============================================================================
+        // QUOTE TEMPLATES (4)
+        // ============================================================================
+        const quote_templates = [
+          {
+            id: "qt-t-001",
+            name: "Pacchetto Colloqui Base",
+            quote_type: "interviews_package",
+            base_amount: 2500,
+            default_payment_terms: "50% upfront + 50% a 30gg",
+            default_notes:
+              "Pacchetto 10 colloqui HR con screening CV, prima intervista video e report sintetico per il cliente. Scalabile a 20/30 colloqui con sconto volume.",
+          },
+          {
+            id: "qt-t-002",
+            name: "Subscription Recruiting Mensile",
+            quote_type: "subscription",
+            base_amount: 4500,
+            default_payment_terms: "Mensile anticipato - 30gg DF",
+            default_notes:
+              "Subscription 6 mesi con headhunting continuo, campagne social recruiting e video employer-branding. Include dashboard KPI e report settimanale.",
+          },
+          {
+            id: "qt-t-003",
+            name: "Pilot Partnership Test",
+            quote_type: "test_partnership",
+            base_amount: 3200,
+            default_payment_terms: "Flat anticipato",
+            default_notes:
+              "Test 30 giorni con 1 ruolo pilot. Valutazione congiunta ROI a fine periodo con opzione conversione in subscription (sconto 10% su primo mese).",
+          },
+          {
+            id: "qt-t-004",
+            name: "Setup + Subscription Performance",
+            quote_type: "setup_fee_subscription",
+            base_amount: 32000,
+            default_payment_terms: "3K setup + 5.8K/mese x 5 mesi",
+            default_notes:
+              "Setup iniziale con audit funnel, configurazione tracking e creatività. A seguire subscription mensile con performance marketing e lead generation B2B.",
+          },
+        ];
+
+        // ============================================================================
+        // EMAIL TEMPLATES (10)
+        // ============================================================================
+        const email_templates = [
+          {
+            id: "et-001",
+            name: "Primo contatto cold",
+            category: "first_contact",
+            language: "it",
+            subject:
+              "Aiutiamo {{cliente}} a trovare {{position_title}} in meno di 30 giorni",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nmi chiamo {{sales_name}} e lavoro in HireFast. Aiutiamo aziende come {{cliente}} a trovare {{position_title}} con campagne social targettate e pre-screening HR.\n\nAbbiamo appena chiuso un caso simile nel tuo settore: 15 assunzioni in 20 giorni e time-to-hire ridotto del 62%.\n\nTi va una call di 15 minuti per capire se possiamo replicarlo anche da voi? Ti propongo martedì alle 10:00 o mercoledì alle 15:00.\n\nGrazie,\n{{sales_name}}\n+39 345 1234567",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "position_title",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["new", "qualified"],
+            display_order: 1,
+          },
+          {
+            id: "et-002",
+            name: "Follow-up post call",
+            category: "follow_up",
+            language: "it",
+            subject: "Riepilogo call di oggi - prossimi passi per {{cliente}}",
+            body_text:
+              "Ciao {{contact_first_name}},\n\ngrazie per il tempo di oggi. Come anticipato, riepilogo i punti concordati:\n\n- Obiettivo: {{obiettivo}}\n- Tempistica: {{tempistica}}\n- Prossimo step: invio proposta entro {{deadline}}\n\nNel frattempo ti allego il case study che ti avevo menzionato, così puoi farti un'idea concreta dei risultati che portiamo.\n\nRimango a disposizione per domande.\n\n{{sales_name}}",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "obiettivo",
+              "tempistica",
+              "deadline",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["qualified", "closer_appointment"],
+            display_order: 2,
+          },
+          {
+            id: "et-003",
+            name: "Invio preventivo",
+            category: "proposal_sent",
+            language: "it",
+            subject:
+              "Proposta HireFast per {{cliente}} - {{position_title}} ({{quote_number}})",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nin allegato trovi la proposta HireFast per {{position_title}}.\n\nIn sintesi:\n- Investimento: {{total_amount}}€ ({{quote_type}})\n- Condizioni: {{payment_terms}}\n- Decorrenza: entro 7 giorni dalla firma\n\nAbbiamo già pre-validati i primi profili: appena firmi, partiamo nelle 48h.\n\nTi va di sentirci giovedì alle 11:00 per rispondere alle tue domande e chiudere?\n\n{{sales_name}}",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "position_title",
+              "quote_number",
+              "total_amount",
+              "quote_type",
+              "payment_terms",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["proposal_sent", "negotiation"],
+            display_order: 3,
+          },
+          {
+            id: "et-004",
+            name: "Sollecito firma",
+            category: "signature_reminder",
+            language: "it",
+            subject: "Reminder firma contratto {{cliente}} - partiamo lunedì?",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nil contratto è pronto per la firma via DocuSign (link inviato il {{sent_date}}).\n\nPer rispettare la deadline di inizio attività che ci siamo dati ({{start_date}}), mi servirebbe la firma entro venerdì: così la campagna parte lunedì mattina e non perdiamo settimane preziose.\n\nSe ci sono dubbi o modifiche, rispondi a questa mail o chiamami direttamente: {{sales_phone}}.\n\n{{sales_name}}",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "sent_date",
+              "start_date",
+              "sales_name",
+              "sales_phone",
+            ],
+            suggested_for_statuses: ["awaiting_signature"],
+            display_order: 4,
+          },
+          {
+            id: "et-005",
+            name: "Sollecito pagamento",
+            category: "payment_reminder",
+            language: "it",
+            subject:
+              "Promemoria fattura {{invoice_number}} - {{cliente}} in scadenza",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nti scrivo come promemoria per la fattura {{invoice_number}} ({{amount}}€) emessa il {{issue_date}} e in scadenza il {{due_date}}.\n\nSe hai già effettuato il bonifico, ignora pure questa mail e grazie. Altrimenti, i nostri IBAN sono in calce alla fattura.\n\nSe c'è qualsiasi problema o vuoi concordare una rateizzazione, fammi sapere.\n\nGrazie,\n{{sales_name}}",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "invoice_number",
+              "amount",
+              "issue_date",
+              "due_date",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["customer"],
+            display_order: 5,
+          },
+          {
+            id: "et-006",
+            name: "Ringraziamento chiusura",
+            category: "closing_thanks",
+            language: "it",
+            subject: "Benvenuti in HireFast, {{cliente}}!",
+            body_text:
+              "Ciao {{contact_first_name}},\n\ncontratto firmato, si parte. Grazie per la fiducia: da oggi il team HireFast è ufficialmente con voi su {{position_title}}.\n\nNelle prossime 48h ti invieremo:\n1. Link alla dashboard con i KPI live\n2. Invito al gruppo WhatsApp dedicato a {{cliente}}\n3. Agenda del primo check-in settimanale\n\nObiettivo dichiarato: {{goal_text}}. Siamo pronti.\n\nA presto,\n{{sales_name}} + il team HireFast",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "position_title",
+              "goal_text",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["customer"],
+            display_order: 6,
+          },
+          {
+            id: "et-007",
+            name: "Ri-engagement lead freddo",
+            category: "reengagement",
+            language: "it",
+            subject: "Ci hai pensato, {{contact_first_name}}?",
+            body_text:
+              'Ciao {{contact_first_name}},\n\nci eravamo sentiti a {{last_contact_month}} per {{position_title}} da {{cliente}}. Non ti ho più scritto perché preferisco non fare pressione, ma magari nel frattempo le cose sono cambiate.\n\nDa allora abbiamo chiuso altri 3 casi simili nel tuo settore: se vuoi ti giro in 2 minuti i numeri aggiornati e capiamo insieme se ha senso riaprire il discorso.\n\nSe invece hai risolto diversamente, basta una riga: "chiuso". Ti tolgo dai follow-up senza rancore.\n\n{{sales_name}}',
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "last_contact_month",
+              "position_title",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["postponed", "discarded"],
+            display_order: 7,
+          },
+          {
+            id: "et-008",
+            name: "Onboarding post firma",
+            category: "onboarding",
+            language: "it",
+            subject: "Kickoff HireFast x {{cliente}} - call martedì ore 10",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nbenvenuti a bordo. Per iniziare al meglio, fissiamo il kickoff:\n\nData: martedì {{kickoff_date}} ore 10:00\nLink: {{meeting_url}}\nPartecipanti: te, {{sales_name}} (account) e {{hr_lead_name}} (HR lead)\n\nIn 45 minuti allineiamo:\n1. Ruolo e must-have candidato\n2. Tone of voice annunci e employer-branding\n3. Calendario primi colloqui (entro 10gg)\n\nSe ti serve spostarla, dimmi 2 slot alternativi.\n\n{{sales_name}}",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "kickoff_date",
+              "meeting_url",
+              "sales_name",
+              "hr_lead_name",
+            ],
+            suggested_for_statuses: ["customer"],
+            display_order: 8,
+          },
+          {
+            id: "et-009",
+            name: "Richiesta referral",
+            category: "referral_request",
+            language: "it",
+            subject:
+              "Un favore rapido ({{contact_first_name}}) - e 500€ di bonus per te",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nrisultati alla mano, il progetto con {{cliente}} sta andando oltre le aspettative ({{result_snippet}}). Grazie della fiducia.\n\nFavore rapido: conosci altre aziende nel tuo settore che hanno difficoltà a trovare personale qualificato? Se ci metti in contatto e chiudiamo, ti riconosciamo 500€ di credito sulla tua subscription.\n\nBasta una mail con il nome e il contatto di riferimento, al resto pensiamo noi.\n\nGrazie di cuore,\n{{sales_name}}",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "result_snippet",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["customer"],
+            display_order: 9,
+          },
+          {
+            id: "et-010",
+            name: "Auguri stagionali",
+            category: "seasonal_greetings",
+            language: "it",
+            subject: "Buone feste da tutto il team HireFast {{season_label}}",
+            body_text:
+              "Ciao {{contact_first_name}},\n\nprima di staccare per {{season_label}}, volevo dirti grazie. Il {{year}} è stato un anno intenso e averti avuto come cliente è stata una delle cose più belle.\n\nRientriamo operativi il {{return_date}}: se ti serve qualcosa di urgente prima, {{emergency_contact}} è il contatto di emergenza.\n\nBuone feste a te e al team di {{cliente}}.\n\n{{sales_name}} + tutto HireFast",
+            variables: [
+              "cliente",
+              "contact_first_name",
+              "season_label",
+              "year",
+              "return_date",
+              "emergency_contact",
+              "sales_name",
+            ],
+            suggested_for_statuses: ["customer"],
+            display_order: 10,
+          },
+        ];
+
+        // ============================================================================
+        // QUARTERLY COMMISSIONS (Q2 2026)
+        // ============================================================================
+        const quarterly_commissions = [
+          {
+            id: "qc-001",
+            user_id: "u-gab-001",
+            quarter_start_date: "2026-04-01",
+            quarter_end_date: "2026-06-30",
+            revenue_target: 100000,
+            current_revenue: 38500,
+            tier_achieved: "none",
+            rate_percentage: 2.5,
+            earned_amount: 0,
+            tiers: {
+              l1: { threshold: 100000, rate: 2.5 },
+              l2: { threshold: 180000, rate: 3.0 },
+              l3: { threshold: 280000, rate: 3.5 },
+            },
+          },
+          {
+            id: "qc-002",
+            user_id: "u-luca-002",
+            quarter_start_date: "2026-04-01",
+            quarter_end_date: "2026-06-30",
+            revenue_target: 80000,
+            current_revenue: 92400,
+            tier_achieved: "l1",
+            rate_percentage: 2.5,
+            earned_amount: 2310,
+            tiers: {
+              l1: { threshold: 80000, rate: 2.5 },
+              l2: { threshold: 140000, rate: 3.0 },
+              l3: { threshold: 220000, rate: 3.5 },
+            },
+          },
+          {
+            id: "qc-003",
+            user_id: "u-chiara-003",
+            quarter_start_date: "2026-04-01",
+            quarter_end_date: "2026-06-30",
+            revenue_target: 70000,
+            current_revenue: 152000,
+            tier_achieved: "l2",
+            rate_percentage: 3.0,
+            earned_amount: 4560,
+            tiers: {
+              l1: { threshold: 70000, rate: 2.5 },
+              l2: { threshold: 130000, rate: 3.0 },
+              l3: { threshold: 200000, rate: 3.5 },
+            },
+          },
+          {
+            id: "qc-004",
+            user_id: "u-marco-004",
+            quarter_start_date: "2026-04-01",
+            quarter_end_date: "2026-06-30",
+            revenue_target: 60000,
+            current_revenue: 18200,
+            tier_achieved: "none",
+            rate_percentage: 2.5,
+            earned_amount: 0,
+            tiers: {
+              l1: { threshold: 60000, rate: 2.5 },
+              l2: { threshold: 120000, rate: 3.0 },
+              l3: { threshold: 190000, rate: 3.5 },
+            },
+          },
+        ];
+
+        // ============================================================================
+        // EQUITY GRANTS 2026
+        // ============================================================================
+        const equity_grants = [
+          {
+            id: "eq-001",
+            user_id: "u-gab-001",
+            grant_year: 2026,
+            tier_level: "l2",
+            revenue_threshold: 500000,
+            revenue_achieved: 385000,
+            shares_value_eur: 12000,
+            vested_at: null,
+            tiers: {
+              l1: { threshold: 300000, shares_value: 5000 },
+              l2: { threshold: 500000, shares_value: 12000 },
+              l3: { threshold: 800000, shares_value: 18000 },
+            },
+          },
+          {
+            id: "eq-002",
+            user_id: "u-luca-002",
+            grant_year: 2026,
+            tier_level: "l1",
+            revenue_threshold: 250000,
+            revenue_achieved: 278000,
+            shares_value_eur: 5000,
+            vested_at: null,
+            tiers: {
+              l1: { threshold: 250000, shares_value: 5000 },
+              l2: { threshold: 420000, shares_value: 10000 },
+              l3: { threshold: 650000, shares_value: 16000 },
+            },
+          },
+          {
+            id: "eq-003",
+            user_id: "u-chiara-003",
+            grant_year: 2026,
+            tier_level: "l2",
+            revenue_threshold: 400000,
+            revenue_achieved: 442000,
+            shares_value_eur: 10000,
+            vested_at: null,
+            tiers: {
+              l1: { threshold: 220000, shares_value: 5000 },
+              l2: { threshold: 400000, shares_value: 10000 },
+              l3: { threshold: 620000, shares_value: 16000 },
+            },
+          },
+          {
+            id: "eq-004",
+            user_id: "u-marco-004",
+            grant_year: 2026,
+            tier_level: "none",
+            revenue_threshold: 200000,
+            revenue_achieved: 65200,
+            shares_value_eur: 0,
+            vested_at: null,
+            tiers: {
+              l1: { threshold: 200000, shares_value: 4000 },
+              l2: { threshold: 360000, shares_value: 9000 },
+              l3: { threshold: 580000, shares_value: 15000 },
+            },
+          },
+        ];
+
+        // ============================================================================
+        // GEO REGIONS (11)
+        // ============================================================================
+        const geo_regions = [
+          {
+            id: "reg-lombardia",
+            name: "Lombardia",
+            iso_code: "IT-25",
+            cities_count: 5,
+            clients_count: 14,
+            leads_count: 25,
+            spend_total: 21300,
+            revenue_total: 86200,
+            roas: 4.05,
+            case_studies_count: 2,
+            lat: 45.58,
+            lng: 9.93,
+          },
+          {
+            id: "reg-piemonte",
+            name: "Piemonte",
+            iso_code: "IT-21",
+            cities_count: 1,
+            clients_count: 4,
+            leads_count: 7,
+            spend_total: 6200,
+            revenue_total: 18500,
+            roas: 2.98,
+            case_studies_count: 0,
+            lat: 45.07,
+            lng: 7.69,
+          },
+          {
+            id: "reg-veneto",
+            name: "Veneto",
+            iso_code: "IT-34",
+            cities_count: 3,
+            clients_count: 4,
+            leads_count: 9,
+            spend_total: 6000,
+            revenue_total: 19000,
+            roas: 3.17,
+            case_studies_count: 2,
+            lat: 45.43,
+            lng: 12.0,
+          },
+          {
+            id: "reg-emilia-romagna",
+            name: "Emilia-Romagna",
+            iso_code: "IT-45",
+            cities_count: 2,
+            clients_count: 4,
+            leads_count: 7,
+            spend_total: 5000,
+            revenue_total: 16000,
+            roas: 3.2,
+            case_studies_count: 0,
+            lat: 44.5,
+            lng: 11.34,
+          },
+          {
+            id: "reg-toscana",
+            name: "Toscana",
+            iso_code: "IT-52",
+            cities_count: 3,
+            clients_count: 4,
+            leads_count: 6,
+            spend_total: 4600,
+            revenue_total: 15000,
+            roas: 3.26,
+            case_studies_count: 1,
+            lat: 43.77,
+            lng: 11.26,
+          },
+          {
+            id: "reg-lazio",
+            name: "Lazio",
+            iso_code: "IT-62",
+            cities_count: 1,
+            clients_count: 5,
+            leads_count: 9,
+            spend_total: 7600,
+            revenue_total: 22400,
+            roas: 2.95,
+            case_studies_count: 1,
+            lat: 41.9,
+            lng: 12.5,
+          },
+          {
+            id: "reg-campania",
+            name: "Campania",
+            iso_code: "IT-72",
+            cities_count: 1,
+            clients_count: 2,
+            leads_count: 5,
+            spend_total: 2600,
+            revenue_total: 7200,
+            roas: 2.77,
+            case_studies_count: 0,
+            lat: 40.85,
+            lng: 14.27,
+          },
+          {
+            id: "reg-puglia",
+            name: "Puglia",
+            iso_code: "IT-75",
+            cities_count: 1,
+            clients_count: 1,
+            leads_count: 2,
+            spend_total: 1400,
+            revenue_total: 4200,
+            roas: 3.0,
+            case_studies_count: 0,
+            lat: 41.12,
+            lng: 16.87,
+          },
+          {
+            id: "reg-sicilia",
+            name: "Sicilia",
+            iso_code: "IT-82",
+            cities_count: 2,
+            clients_count: 1,
+            leads_count: 4,
+            spend_total: 2400,
+            revenue_total: 5200,
+            roas: 2.17,
+            case_studies_count: 0,
+            lat: 37.6,
+            lng: 14.02,
+          },
+          {
+            id: "reg-liguria",
+            name: "Liguria",
+            iso_code: "IT-42",
+            cities_count: 1,
+            clients_count: 1,
+            leads_count: 2,
+            spend_total: 1400,
+            revenue_total: 3800,
+            roas: 2.71,
+            case_studies_count: 0,
+            lat: 44.41,
+            lng: 8.95,
+          },
+          {
+            id: "reg-sardegna",
+            name: "Sardegna",
+            iso_code: "IT-88",
+            cities_count: 1,
+            clients_count: 0,
+            leads_count: 1,
+            spend_total: 500,
+            revenue_total: 0,
+            roas: 0,
+            case_studies_count: 0,
+            lat: 39.22,
+            lng: 9.12,
+          },
+        ];
+
+        // ============================================================================
+        // GEO COMPANIES (35)
+        // ============================================================================
+        const geo_companies = [
+          {
+            company_id: "c-001",
+            company_name: "Trattoria Da Giovanni SRL",
+            city: "Milano",
+            region: "Lombardia",
+            sector: "Ristorazione",
+            status: "client",
+            lead_count: 2,
+            revenue_total: 4500,
+            last_interaction_at: daysAgo(7),
+            lat: 45.4642,
+            lng: 9.19,
+          },
+          {
+            company_id: "c-002",
+            company_name: "Supermercati Alpina SPA",
+            city: "Bergamo",
+            region: "Lombardia",
+            sector: "GDO",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 168000,
+            last_interaction_at: daysAgo(3),
+            lat: 45.6983,
+            lng: 9.6773,
+          },
+          {
+            company_id: "c-003",
+            company_name: "ModaChic Boutique SRL",
+            city: "Firenze",
+            region: "Toscana",
+            sector: "Retail Fashion",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(5),
+            lat: 43.7696,
+            lng: 11.2558,
+          },
+          {
+            company_id: "c-004",
+            company_name: "TechStore Online SRL",
+            city: "Bologna",
+            region: "Emilia-Romagna",
+            sector: "Ecommerce",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(1),
+            lat: 44.4949,
+            lng: 11.3426,
+          },
+          {
+            company_id: "c-005",
+            company_name: "Hotel Belvedere & Spa",
+            city: "Verona",
+            region: "Veneto",
+            sector: "Hospitality",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(10),
+            lat: 45.4384,
+            lng: 10.9916,
+          },
+          {
+            company_id: "c-006",
+            company_name: "Logistica Veloce SRL",
+            city: "Padova",
+            region: "Veneto",
+            sector: "Logistica",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(6),
+            lat: 45.4064,
+            lng: 11.8768,
+          },
+          {
+            company_id: "c-007",
+            company_name: "Edilbianchi Costruzioni SRL",
+            city: "Torino",
+            region: "Piemonte",
+            sector: "Edilizia",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(4),
+            lat: 45.0703,
+            lng: 7.6869,
+          },
+          {
+            company_id: "c-008",
+            company_name: "Bellezza&Co Beauty Salon",
+            city: "Milano",
+            region: "Lombardia",
+            sector: "Beauty",
+            status: "lead",
+            lead_count: 2,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(6),
+            lat: 45.4783,
+            lng: 9.195,
+          },
+          {
+            company_id: "c-009",
+            company_name: "AutoRossi Concessionaria",
+            city: "Brescia",
+            region: "Lombardia",
+            sector: "Automotive",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(1),
+            lat: 45.5416,
+            lng: 10.2118,
+          },
+          {
+            company_id: "c-010",
+            company_name: "FitLife Palestre SRL",
+            city: "Roma",
+            region: "Lazio",
+            sector: "Fitness",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(2),
+            lat: 41.9028,
+            lng: 12.4964,
+          },
+          {
+            company_id: "c-011",
+            company_name: "Pizzeria Napoli Vera",
+            city: "Napoli",
+            region: "Campania",
+            sector: "Ristorazione",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(2),
+            lat: 40.8518,
+            lng: 14.2681,
+          },
+          {
+            company_id: "c-012",
+            company_name: "Elettrodomestici Casa SRL",
+            city: "Bari",
+            region: "Puglia",
+            sector: "Retail",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(7),
+            lat: 41.1171,
+            lng: 16.8719,
+          },
+          {
+            company_id: "c-013",
+            company_name: "Dolci Delizie Pasticceria",
+            city: "Catania",
+            region: "Sicilia",
+            sector: "Ristorazione",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(9),
+            lat: 37.5079,
+            lng: 15.083,
+          },
+          {
+            company_id: "c-014",
+            company_name: "Mobili Legno Design SRL",
+            city: "Brianza",
+            region: "Lombardia",
+            sector: "Retail Arredo",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(6),
+            lat: 45.61,
+            lng: 9.27,
+          },
+          {
+            company_id: "c-015",
+            company_name: "B&B Case Vacanza Toscane",
+            city: "Siena",
+            region: "Toscana",
+            sector: "Hospitality",
+            status: "prospect",
+            lead_count: 2,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(4),
+            lat: 43.3188,
+            lng: 11.3308,
+          },
+          {
+            company_id: "c-016",
+            company_name: "Panificio Mattei SRL",
+            city: "Prato",
+            region: "Toscana",
+            sector: "Ristorazione",
+            status: "lead",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(3),
+            lat: 43.8808,
+            lng: 11.0966,
+          },
+          {
+            company_id: "c-017",
+            company_name: "Studio Dentistico Sorriso",
+            city: "Milano",
+            region: "Lombardia",
+            sector: "Sanità",
+            status: "lead",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(1, 9, 15),
+            lat: 45.47,
+            lng: 9.19,
+          },
+          {
+            company_id: "c-018",
+            company_name: "Officina Meccanica Rossi",
+            city: "Monza",
+            region: "Lombardia",
+            sector: "Automotive",
+            status: "client",
+            lead_count: 2,
+            revenue_total: 3600,
+            last_interaction_at: daysAgo(1),
+            lat: 45.5845,
+            lng: 9.2744,
+          },
+          {
+            company_id: "c-ext-019",
+            company_name: "Ristorante Grand Milano",
+            city: "Milano",
+            region: "Lombardia",
+            sector: "Ristorazione",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 22000,
+            last_interaction_at: daysAgo(21),
+            lat: 45.465,
+            lng: 9.193,
+          },
+          {
+            company_id: "c-ext-020",
+            company_name: "Coop Milano Est",
+            city: "Milano",
+            region: "Lombardia",
+            sector: "GDO",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 36000,
+            last_interaction_at: daysAgo(18),
+            lat: 45.48,
+            lng: 9.22,
+          },
+          {
+            company_id: "c-ext-021",
+            company_name: "Beauty Lounge Torino",
+            city: "Torino",
+            region: "Piemonte",
+            sector: "Beauty",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 8400,
+            last_interaction_at: daysAgo(45),
+            lat: 45.07,
+            lng: 7.69,
+          },
+          {
+            company_id: "c-ext-022",
+            company_name: "Palestra PowerFit Roma",
+            city: "Roma",
+            region: "Lazio",
+            sector: "Fitness",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 14200,
+            last_interaction_at: daysAgo(30),
+            lat: 41.91,
+            lng: 12.5,
+          },
+          {
+            company_id: "c-ext-023",
+            company_name: "Hotel Vista Mare Genova",
+            city: "Genova",
+            region: "Liguria",
+            sector: "Hospitality",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 9800,
+            last_interaction_at: daysAgo(52),
+            lat: 44.4056,
+            lng: 8.9463,
+          },
+          {
+            company_id: "c-ext-024",
+            company_name: "Boutique Luxury Parma",
+            city: "Parma",
+            region: "Emilia-Romagna",
+            sector: "Retail Fashion",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 7400,
+            last_interaction_at: daysAgo(40),
+            lat: 44.8015,
+            lng: 10.3279,
+          },
+          {
+            company_id: "c-ext-025",
+            company_name: "Pizzeria del Porto Venezia",
+            city: "Venezia",
+            region: "Veneto",
+            sector: "Ristorazione",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 5200,
+            last_interaction_at: daysAgo(28),
+            lat: 45.4408,
+            lng: 12.3155,
+          },
+          {
+            company_id: "c-ext-026",
+            company_name: "Supermarket Da Vinci Bologna",
+            city: "Bologna",
+            region: "Emilia-Romagna",
+            sector: "GDO",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 18500,
+            last_interaction_at: daysAgo(15),
+            lat: 44.494,
+            lng: 11.34,
+          },
+          {
+            company_id: "c-ext-027",
+            company_name: "Caffetteria Firenze Centro",
+            city: "Firenze",
+            region: "Toscana",
+            sector: "Ristorazione",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 6200,
+            last_interaction_at: daysAgo(35),
+            lat: 43.77,
+            lng: 11.25,
+          },
+          {
+            company_id: "c-ext-028",
+            company_name: "Pub Irlandese Napoli",
+            city: "Napoli",
+            region: "Campania",
+            sector: "Ristorazione",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(22),
+            lat: 40.85,
+            lng: 14.26,
+          },
+          {
+            company_id: "c-ext-029",
+            company_name: "Elettrotecnica Bari Sud",
+            city: "Bari",
+            region: "Puglia",
+            sector: "Retail",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(17),
+            lat: 41.12,
+            lng: 16.87,
+          },
+          {
+            company_id: "c-ext-030",
+            company_name: "Gelateria Catania Marina",
+            city: "Catania",
+            region: "Sicilia",
+            sector: "Ristorazione",
+            status: "prospect",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(25),
+            lat: 37.51,
+            lng: 15.08,
+          },
+          {
+            company_id: "c-ext-031",
+            company_name: "B&B Palermo Mondello",
+            city: "Palermo",
+            region: "Sicilia",
+            sector: "Hospitality",
+            status: "lead",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(14),
+            lat: 38.1157,
+            lng: 13.3615,
+          },
+          {
+            company_id: "c-ext-032",
+            company_name: "Ristorante Cagliari Porto",
+            city: "Cagliari",
+            region: "Sardegna",
+            sector: "Ristorazione",
+            status: "lead",
+            lead_count: 1,
+            revenue_total: 0,
+            last_interaction_at: daysAgo(20),
+            lat: 39.2238,
+            lng: 9.1217,
+          },
+          {
+            company_id: "c-ext-033",
+            company_name: "Show Room Arredo Brescia",
+            city: "Brescia",
+            region: "Lombardia",
+            sector: "Retail Arredo",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 11200,
+            last_interaction_at: daysAgo(50),
+            lat: 45.54,
+            lng: 10.21,
+          },
+          {
+            company_id: "c-ext-034",
+            company_name: "Concessionaria Torino Nord",
+            city: "Torino",
+            region: "Piemonte",
+            sector: "Automotive",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 10100,
+            last_interaction_at: daysAgo(60),
+            lat: 45.08,
+            lng: 7.7,
+          },
+          {
+            company_id: "c-ext-035",
+            company_name: "Palestra FitCenter Padova",
+            city: "Padova",
+            region: "Veneto",
+            sector: "Fitness",
+            status: "client",
+            lead_count: 1,
+            revenue_total: 5800,
+            last_interaction_at: daysAgo(33),
+            lat: 45.41,
+            lng: 11.88,
+          },
+        ];
+
+        // ============================================================================
+        // WABA CONFIG
+        // ============================================================================
+        const waba_config = {
+          shared_phone_number: "+39 02 9476 8810",
+          provider: "Meta Business Platform via Brevo/360dialog",
+          note: "Numero condiviso di tutti i sales; i messaggi sono instradati al commerciale owner della lead via mapping WABA.",
+        };
+
+        // Extend leads with follow_up_frequency_days, is_stale, assigned_at, last_comment_at
+        // Derive is_stale from days_since_last_contact > follow_up_frequency_days
+        const TODAY_LEAD_IDS = ["l-001", "l-002", "l-003"]; // assigned today
+        leads.forEach((l) => {
+          if (l.follow_up_frequency_days == null) {
+            // Longer cadence for cantiere/ongoing and seasonal
+            if (l.status === "postponed" || l.status === "discarded") {
+              l.follow_up_frequency_days = 60;
+            } else if (l.status === "customer") {
+              l.follow_up_frequency_days = 30;
+            } else if (
+              l.status === "awaiting_signature" ||
+              l.status === "contract_drafting"
+            ) {
+              l.follow_up_frequency_days = 14;
+            } else {
+              l.follow_up_frequency_days = 7;
+            }
+          }
+          if (l.is_stale == null) {
+            l.is_stale =
+              l.days_since_last_contact != null &&
+              l.days_since_last_contact > l.follow_up_frequency_days;
+          }
+          if (l.assigned_at == null) {
+            // Most assigned days ago, but first 3 are "today"
+            l.assigned_at = TODAY_LEAD_IDS.includes(l.id)
+              ? todayAt(9, 0)
+              : daysAgo(l.days_in_current_status || 5);
+          }
+          if (l.last_comment_at == null) {
+            l.last_comment_at =
+              l.days_since_last_contact != null
+                ? daysAgo(l.days_since_last_contact, 14, 0)
+                : null;
+          }
+        });
+
         window.MOCK_DATA = {
           meta: {
-            version: "1.0.0",
+            version: "1.1.0",
             generated_at: iso(NOW),
             timezone: "Europe/Rome",
             language: "it",
@@ -5199,6 +6833,15 @@
           commissions,
           geo_sales_data,
           today_kpis,
+          case_studies,
+          team_alerts,
+          quote_templates,
+          email_templates,
+          quarterly_commissions,
+          equity_grants,
+          geo_regions,
+          geo_companies,
+          waba_config,
         };
       })();
     </script>
@@ -5759,6 +7402,50 @@
               `;
       }
 
+      /* === Toast === */
+      function showToast(msg) {
+        let el = document.getElementById("__toast");
+        if (!el) {
+          el = document.createElement("div");
+          el.id = "__toast";
+          el.className = "toast";
+          document.body.appendChild(el);
+        }
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(el._t);
+        el._t = setTimeout(() => el.classList.remove("show"), 2200);
+      }
+      window.showToast = showToast;
+
+      /* === Filters state === */
+      const FILTERS = {
+        pipeline: {
+          filter: "all",
+          search: "",
+          density: localStorage.getItem("pipeline_density") || "extended",
+        },
+        lead: { filter: "all", search: "" },
+        preventivi: { filter: "all", search: "" },
+        appuntamenti: { filter: "today", search: "" },
+        ricerca: {
+          status: "all",
+          search: "",
+          role: "all",
+          from: null,
+          to: null,
+        },
+        alerts: { filter: "open", severity: "all", user: "all", type: "all" },
+        geo: {
+          level: "regions",
+          regionId: null,
+          cityName: null,
+          metric: "revenue_total",
+        },
+      };
+
+      const CURRENT_USER_ID = "u-gab-001";
+
       /* ============================================================
        * OGGI
        * ============================================================ */
@@ -5772,13 +7459,20 @@
           })
           .sort((a, b) => new Date(a.scheduled_at) - new Date(b.scheduled_at));
 
-        const staleLeads = M.leads
-          .filter(
-            (l) =>
-              l.days_since_last_contact >= 7 &&
-              !["customer", "discarded", "postponed"].includes(l.status),
-          )
-          .slice(0, 3);
+        // Stale leads: respect per-lead follow_up_frequency_days
+        const staleLeadsAll = M.leads.filter(
+          (l) =>
+            l.is_stale === true &&
+            !["customer", "discarded"].includes(l.status),
+        );
+        const staleLeads = staleLeadsAll.slice(0, 3);
+
+        // New leads assigned today
+        const todayDate = new Date("2026-04-18T00:00:00+02:00").toDateString();
+        const newTodayLeads = M.leads.filter((l) => {
+          if (!l.assigned_at) return false;
+          return new Date(l.assigned_at).toDateString() === todayDate;
+        });
 
         const actionsHtml = k.actions_priority
           .map(
@@ -5840,6 +7534,14 @@
           })
           .join("");
 
+        // Clienti in fase di ingresso (Offerta + Attesa contratto)
+        const phaseOffer = M.leads.filter((l) =>
+          ["proposal_sent", "negotiation"].includes(l.status),
+        ).length;
+        const phaseContract = M.leads.filter((l) =>
+          ["contract_drafting", "awaiting_signature"].includes(l.status),
+        ).length;
+
         document.getElementById("oggi-content").innerHTML = `
                 <div class="mb-8">
                   <div class="eyebrow mb-3">Benvenuto, Gabriele</div>
@@ -5848,6 +7550,35 @@
                     Hai <strong class="text-[var(--ink)] font-normal">${k.appointments_today} appuntamenti</strong>, <strong class="text-[var(--ink)] font-normal">${k.appointments_past_unhandled} esiti</strong> da aggiornare e <strong class="text-[var(--ink)] font-normal">${k.unread_messages} messaggi</strong> non letti.
                   </p>
                 </div>
+
+                ${
+                  newTodayLeads.length > 0
+                    ? `
+                <div class="card-lg mb-6" style="background:linear-gradient(135deg,rgba(21,81,95,0.06),rgba(21,128,61,0.04));border-color:rgba(21,81,95,0.18);padding:20px 24px">
+                  <div class="flex items-center gap-4 flex-wrap">
+                    <div class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(21,81,95,0.12);color:var(--teal)">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="font-semibold text-[1rem]">${newTodayLeads.length} ${newTodayLeads.length === 1 ? "nuova lead assegnata" : "nuove lead assegnate"} oggi</div>
+                      <div class="text-[0.86rem] text-[var(--muted)]">${newTodayLeads
+                        .slice(0, 3)
+                        .map(
+                          (l) =>
+                            byId(M.companies, l.company_id)?.business_name ||
+                            "—",
+                        )
+                        .join(
+                          " · ",
+                        )}${newTodayLeads.length > 3 ? ` · +${newTodayLeads.length - 3}` : ""}</div>
+                    </div>
+                    <button class="btn-secondary" onclick="__showWf('wf-lead')">Apri lista lead
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                </div>`
+                    : ""
+                }
 
                 ${
                   k.appointments_past_unhandled > 0
@@ -5901,6 +7632,37 @@
                     <div class="display" style="font-size:2.4rem">${k.unread_messages}</div>
                     <div class="text-[var(--muted)] text-[0.88rem] mt-1">Messaggi non letti</div>
                     <div class="mt-2"><span class="chip chip-green">3 WhatsApp · 2 email</span></div>
+                  </div>
+                </div>
+
+                <div class="card-lg p-7 mb-8" style="background:linear-gradient(135deg,rgba(245,138,7,0.04),rgba(21,81,95,0.03))">
+                  <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
+                    <div>
+                      <div class="eyebrow mb-1">Pipeline in chiusura</div>
+                      <div class="display-h2">Clienti in fase di ingresso</div>
+                      <div class="text-[0.86rem] text-[var(--muted)] mt-1">Deal con proposta inviata o contratto in attesa firma.</div>
+                    </div>
+                    <button class="btn-ghost" onclick="__showWf('wf-pipeline')">Vai in Pipeline
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="card p-6" style="background:var(--paper)">
+                      <div class="flex items-start justify-between mb-3">
+                        <div class="eyebrow">Offerta</div>
+                        <span class="chip chip-orange">Proposta inviata · Negoziazione</span>
+                      </div>
+                      <div class="display" style="font-size:3.2rem;line-height:1">${phaseOffer}</div>
+                      <div class="text-[0.86rem] text-[var(--muted)] mt-2">${phaseOffer === 1 ? "deal in discussione" : "deal in discussione"}</div>
+                    </div>
+                    <div class="card p-6" style="background:var(--paper)">
+                      <div class="flex items-start justify-between mb-3">
+                        <div class="eyebrow">Attesa contratto</div>
+                        <span class="chip chip-green">Redazione · Firma</span>
+                      </div>
+                      <div class="display" style="font-size:3.2rem;line-height:1">${phaseContract}</div>
+                      <div class="text-[0.86rem] text-[var(--muted)] mt-2">${phaseContract === 1 ? "in attesa di firma" : "in attesa di firma"}</div>
+                    </div>
                   </div>
                 </div>
 
@@ -6152,12 +7914,77 @@
           })
           .join("");
 
+        const density = FILTERS.pipeline.density || "extended";
         document.getElementById("pipeline-content").innerHTML = `
-                ${sectionHeader("Pipeline vendite", "I miei lead", "Kanban per stato. Trascina (simulato) per avanzare.", `<div class="flex gap-3"><button class="btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M7 12h10M10 18h4"/></svg>Filtri</button><button class="btn-primary">Nuovo lead <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>`)}
+                ${sectionHeader(
+                  "Pipeline vendite",
+                  "I miei lead",
+                  "Kanban per stato. Trascina (simulato) per avanzare.",
+                  `<div class="flex gap-3 items-center flex-wrap">
+                  <div class="density-toggle" id="pipeline-density-toggle" role="tablist" aria-label="Densità pipeline">
+                    <button type="button" class="${density === "extended" ? "active" : ""}" data-density="extended">Estesa</button>
+                    <button type="button" class="${density === "compact" ? "active" : ""}" data-density="compact">Compatta</button>
+                  </div>
+                  <button class="btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M7 12h10M10 18h4"/></svg>Filtri</button>
+                  <button class="btn-primary">Nuovo lead <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+                </div>`,
+                )}
                 <div class="flex flex-wrap gap-2 mb-5 pill-tabs" style="padding:6px">${filterHtml}</div>
-                <div class="kanban-scroll">${colsHtml}</div>
+                <div class="kanban-scroll ${density === "compact" ? "pipeline-compact" : ""}" id="pipeline-kanban">${colsHtml}</div>
                 <div class="pipeline-accordion">${accordionHtml}</div>
               `;
+
+        // Density toggle wiring
+        document
+          .querySelectorAll("#pipeline-density-toggle button[data-density]")
+          .forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const d = btn.dataset.density;
+              FILTERS.pipeline.density = d;
+              try {
+                localStorage.setItem("pipeline_density", d);
+              } catch (_) {}
+              document
+                .querySelectorAll(
+                  "#pipeline-density-toggle button[data-density]",
+                )
+                .forEach((b) =>
+                  b.classList.toggle("active", b.dataset.density === d),
+                );
+              const k = document.getElementById("pipeline-kanban");
+              if (k) k.classList.toggle("pipeline-compact", d === "compact");
+            });
+          });
+
+        // Pipeline filter wiring (status filter pills)
+        document.querySelectorAll("[data-pipeline-filter]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const f = btn.dataset.pipelineFilter;
+            FILTERS.pipeline.filter = f;
+            document
+              .querySelectorAll("[data-pipeline-filter]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            // visual: dim cards that don't match
+            const allCards = document.querySelectorAll(
+              "#pipeline-kanban .lead-card, .pipeline-accordion .lead-card",
+            );
+            if (f === "all") {
+              allCards.forEach((c) => (c.style.opacity = ""));
+              return;
+            }
+            // Map filter to status(es) through cols definition
+            const col = cols.find((co) => co.key === f);
+            allCards.forEach((card) => {
+              // Each card sits under a kanban-col h4 label matching the col label
+              const parent = card.closest(".kanban-col, .pipeline-acc-item");
+              const label =
+                parent?.querySelector("h4, .font-semibold")?.textContent || "";
+              card.style.opacity =
+                col && label.includes(col.label) ? "" : "0.25";
+            });
+          });
+        });
 
         // Accordion interactivity + persistence
         const accItems = document.querySelectorAll(
@@ -6192,13 +8019,14 @@
 
       function renderLead() {
         const content = document.getElementById("lead-content");
+        const curF = FILTERS.lead.filter || "all";
         content.innerHTML = `
-                ${sectionHeader("Pipeline", "Lead", `${M.leads.filter((l) => !["customer", "discarded", "postponed"].includes(l.status)).length} lead attive su ${M.leads.length} · cliccane una a sinistra per aprirla a destra.`, `<div class="pill-tabs"><button class="pill-tab active" data-lead-filter="all">Tutte ${M.leads.length}</button><button class="pill-tab" data-lead-filter="mine">Mie</button><button class="pill-tab" data-lead-filter="pod">POD</button><button class="pill-tab" data-lead-filter="urgent">Urgenti</button><button class="pill-tab" data-lead-filter="stale">Ferme</button></div>`)}
+                ${sectionHeader("Pipeline", "Lead", `${M.leads.filter((l) => !["customer", "discarded", "postponed"].includes(l.status)).length} lead attive su ${M.leads.length} · cliccane una a sinistra per aprirla a destra.`, `<div class="pill-tabs"><button class="pill-tab ${curF === "all" ? "active" : ""}" data-lead-filter="all">Tutte ${M.leads.length}</button><button class="pill-tab ${curF === "mine" ? "active" : ""}" data-lead-filter="mine">Mie</button><button class="pill-tab ${curF === "urgent" ? "active" : ""}" data-lead-filter="urgent">Urgenti</button><button class="pill-tab ${curF === "stale" ? "active" : ""}" data-lead-filter="stale">Ferme</button></div>`)}
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-6" style="min-height:72vh">
                   <div class="card-lg lg:col-span-2 p-4 view-list" style="max-height:78vh;overflow-y:auto">
                     <div class="search mb-3" style="max-width:none">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                      <input placeholder="Cerca lead…"/>
+                      <input id="lead-search-input" placeholder="Cerca lead…" value="${FILTERS.lead.search || ""}"/>
                     </div>
                     <div id="lead-list"></div>
                   </div>
@@ -6207,14 +8035,58 @@
               `;
         renderLeadList();
         renderLeadDetail(SELECTED_LEAD_ID);
+        // Wire lead filters
+        document.querySelectorAll("[data-lead-filter]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            FILTERS.lead.filter = btn.dataset.leadFilter;
+            document
+              .querySelectorAll("[data-lead-filter]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderLeadList();
+          });
+        });
+        const si = document.getElementById("lead-search-input");
+        if (si) {
+          si.addEventListener("input", (e) => {
+            FILTERS.lead.search = (e.target.value || "").toLowerCase();
+            renderLeadList();
+          });
+        }
       }
 
       function renderLeadList() {
         const list = document.getElementById("lead-list");
-        const sorted = [...M.leads].sort((a, b) => {
+        if (!list) return;
+        const f = FILTERS.lead.filter || "all";
+        const q = (FILTERS.lead.search || "").toLowerCase();
+        let pool = [...M.leads];
+        if (f === "mine")
+          pool = pool.filter((l) => l.assigned_to_user_id === CURRENT_USER_ID);
+        else if (f === "urgent")
+          pool = pool.filter((l) =>
+            ["critical", "high"].includes(l.urgency_level),
+          );
+        else if (f === "stale") pool = pool.filter((l) => l.is_stale === true);
+        if (q) {
+          pool = pool.filter((l) => {
+            const c = byId(M.companies, l.company_id);
+            return (
+              (c?.business_name || "").toLowerCase().includes(q) ||
+              (l.position_title || "").toLowerCase().includes(q) ||
+              (STATUS_LABEL[l.status] || "").toLowerCase().includes(q)
+            );
+          });
+        }
+        const sorted = pool.sort((a, b) => {
           const order = { critical: 0, high: 1, normal: 2, low: 3 };
           return (order[a.urgency_level] ?? 4) - (order[b.urgency_level] ?? 4);
         });
+        if (!sorted.length) {
+          list.innerHTML =
+            '<div class="text-[var(--muted)] text-[0.86rem] text-center py-8">Nessun lead corrisponde al filtro.</div>';
+          return;
+        }
         list.innerHTML = sorted
           .map((l) => {
             const c = byId(M.companies, l.company_id);
@@ -6577,11 +8449,124 @@
           })
           .join("");
 
+        const curStatus = FILTERS.ricerca.status || "all";
+        const curRole = FILTERS.ricerca.role || "all";
+        const curQ = (FILTERS.ricerca.search || "").toLowerCase();
+
+        // Extract unique roles from job_title
+        const roleSet = new Set(
+          M.market_investigations.map((m) => m.job_title),
+        );
+        const roleOptions = Array.from(roleSet);
+
+        let filteredMIs = [...M.market_investigations];
+        if (curStatus === "approved")
+          filteredMIs = filteredMIs.filter((m) => m.approved_for_quote);
+        else if (curStatus === "pending")
+          filteredMIs = filteredMIs.filter((m) => !m.approved_for_quote);
+        if (curRole !== "all")
+          filteredMIs = filteredMIs.filter((m) => m.job_title === curRole);
+        if (curQ) {
+          filteredMIs = filteredMIs.filter((m) => {
+            const c = byId(M.companies, m.company_id);
+            return (
+              (c?.business_name || "").toLowerCase().includes(curQ) ||
+              (m.job_title || "").toLowerCase().includes(curQ) ||
+              (m.location_label || "").toLowerCase().includes(curQ)
+            );
+          });
+        }
+
+        // Compact row (expandable)
+        const rowsCompact = filteredMIs
+          .map((mi) => {
+            const c = byId(M.companies, mi.company_id);
+            const scoreColor =
+              mi.success_probability_score >= 75
+                ? "chip-green"
+                : mi.success_probability_score >= 50
+                  ? "chip-yellow"
+                  : "chip-red";
+            return `
+              <div class="ricerca-row card p-4" data-mi="${mi.id}" style="cursor:pointer">
+                <div class="flex items-center gap-3 flex-wrap">
+                  <div class="flex-1 min-w-0">
+                    <div class="font-semibold text-[0.96rem]">${c?.business_name || "—"}</div>
+                    <div class="text-[0.82rem] text-[var(--muted)]">${mi.job_title} · ${mi.location_label}</div>
+                  </div>
+                  <span class="chip ${scoreColor}">Score ${mi.success_probability_score}%</span>
+                  <span class="chip chip-ink">${mi.candidate_pool_estimate.toLocaleString("it-IT")} candidati</span>
+                  ${mi.approved_for_quote ? '<span class="chip chip-green">Approvata</span>' : '<span class="chip chip-orange">In attesa</span>'}
+                  <svg class="ricerca-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 0.2s;color:var(--muted)"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="ricerca-expand" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)">
+                  <div class="text-[0.84rem] text-[var(--ink-60)] mb-3" style="font-family:'Instrument Serif',serif;font-style:italic">${mi.executive_summary_1}</div>
+                  <div class="grid grid-cols-4 gap-2 mb-3">
+                    <div class="text-center"><div class="font-mono font-bold">${mi.immediate_availability_count}</div><div class="text-[0.68rem] text-[var(--muted)]">Disponibili</div></div>
+                    <div class="text-center"><div class="font-mono font-bold">${mi.absorbing_companies_count}</div><div class="text-[0.68rem] text-[var(--muted)]">Concorrenti</div></div>
+                    <div class="text-center"><div class="font-mono font-bold">${mi.competition_level}</div><div class="text-[0.68rem] text-[var(--muted)]">Competizione</div></div>
+                    <div class="text-center"><div class="font-mono font-bold">${mi.kpis.length}</div><div class="text-[0.68rem] text-[var(--muted)]">KPI</div></div>
+                  </div>
+                  <div class="flex gap-2 flex-wrap">
+                    ${mi.approved_for_quote ? "" : '<button class="btn-primary" style="padding:8px 16px;min-height:36px" onclick="event.stopPropagation();showToast(\'Approvazione simulata\')">Approva</button>'}
+                    <button class="btn-secondary" style="padding:8px 16px;min-height:36px" onclick="event.stopPropagation()">Apri PDF</button>
+                  </div>
+                </div>
+              </div>`;
+          })
+          .join("");
+
         document.getElementById("ricerca-content").innerHTML = `
-              ${sectionHeader("Ricerca mercato", "Indagini di mercato", "5 analisi attive · approvale per generare preventivi su misura.", "")}
-              <div class="pill-tabs mb-6"><button class="pill-tab active">Tutte ${M.market_investigations.length}</button><button class="pill-tab">Approvate ${M.market_investigations.filter((m) => m.approved_for_quote).length}</button><button class="pill-tab">In attesa ${M.market_investigations.filter((m) => !m.approved_for_quote).length}</button></div>
-              <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">${cards}</div>
+              ${sectionHeader("Ricerca mercato", "Indagini di mercato", `${M.market_investigations.length} analisi totali · approvale per generare preventivi su misura.`, "")}
+              <div class="flex flex-wrap gap-3 items-center mb-5">
+                <div class="pill-tabs">
+                  <button class="pill-tab ${curStatus === "all" ? "active" : ""}" data-r-status="all">Tutte ${M.market_investigations.length}</button>
+                  <button class="pill-tab ${curStatus === "approved" ? "active" : ""}" data-r-status="approved">Approvate ${M.market_investigations.filter((m) => m.approved_for_quote).length}</button>
+                  <button class="pill-tab ${curStatus === "pending" ? "active" : ""}" data-r-status="pending">In attesa ${M.market_investigations.filter((m) => !m.approved_for_quote).length}</button>
+                </div>
+                <select id="r-role" class="p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] text-[0.86rem]">
+                  <option value="all" ${curRole === "all" ? "selected" : ""}>Tutti i ruoli</option>
+                  ${roleOptions.map((r) => `<option value="${r}" ${curRole === r ? "selected" : ""}>${r}</option>`).join("")}
+                </select>
+                <input type="date" id="r-from" class="p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] text-[0.86rem]" value="${FILTERS.ricerca.from || ""}">
+                <input type="date" id="r-to" class="p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] text-[0.86rem]" value="${FILTERS.ricerca.to || ""}">
+                <div class="search ml-auto" style="max-width:280px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="r-search" placeholder="Cerca ricerca…" value="${FILTERS.ricerca.search || ""}"/></div>
+              </div>
+              ${filteredMIs.length ? `<div class="space-y-2">${rowsCompact}</div>` : '<div class="card-lg p-8 text-center text-[var(--muted)]">Nessuna ricerca corrisponde ai filtri.</div>'}
             `;
+
+        // Wire filters
+        document.querySelectorAll("[data-r-status]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            FILTERS.ricerca.status = btn.dataset.rStatus;
+            renderRicerca();
+          });
+        });
+        document.getElementById("r-role")?.addEventListener("change", (e) => {
+          FILTERS.ricerca.role = e.target.value;
+          renderRicerca();
+        });
+        document.getElementById("r-search")?.addEventListener("input", (e) => {
+          FILTERS.ricerca.search = e.target.value;
+          renderRicerca();
+        });
+        document.getElementById("r-from")?.addEventListener("change", (e) => {
+          FILTERS.ricerca.from = e.target.value;
+        });
+        document.getElementById("r-to")?.addEventListener("change", (e) => {
+          FILTERS.ricerca.to = e.target.value;
+        });
+        // Expand/collapse
+        document.querySelectorAll(".ricerca-row").forEach((row) => {
+          row.addEventListener("click", () => {
+            const body = row.querySelector(".ricerca-expand");
+            const chev = row.querySelector(".ricerca-chev");
+            if (!body) return;
+            const open = body.style.display !== "none";
+            body.style.display = open ? "none" : "block";
+            if (chev) chev.style.transform = open ? "" : "rotate(180deg)";
+          });
+        });
       }
 
       /* ============================================================
@@ -6634,20 +8619,29 @@
                     `
                         : ""
                     }
-                    ${a.meeting_url ? `<button class="btn-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>Join</button>` : ""}
+                    ${a.meeting_url ? `<button class="btn-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>Join</button>` : `<button class="btn-ghost" onclick="openVideoLinkModal('${a.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>Genera link</button>`}
                     <button class="btn-ghost" onclick="openLeadDetail('${a.lead_id}')">Dettagli</button>
                   </div>
                 </div>
               `;
         }
 
+        const curAF = FILTERS.appuntamenti.filter || "today";
+        const showingList =
+          curAF === "today"
+            ? today
+            : curAF === "past"
+              ? past
+              : curAF === "week"
+                ? [...today, ...future].slice(0, 20)
+                : [...past, ...today, ...future];
         document.getElementById("appuntamenti-content").innerHTML = `
-              ${sectionHeader("Agenda", "Appuntamenti", `${today.length} oggi · ${past.length} passati da gestire · ${future.length} in arrivo.`, '<button class="btn-primary">Nuovo appuntamento <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>')}
+              ${sectionHeader("Agenda", "Appuntamenti", `${today.length} oggi · ${past.length} passati da gestire · ${future.length} in arrivo.`, '<button class="btn-primary" onclick="openNewAppointmentModal()">Nuovo appuntamento <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>')}
               <div class="pill-tabs mb-6">
-                <button class="pill-tab active">Oggi ${today.length}</button>
-                <button class="pill-tab">Passati da gestire <span class="chip chip-red ml-1" style="font-size:0.66rem">${past.length}</span></button>
-                <button class="pill-tab">Settimana</button>
-                <button class="pill-tab">Tutti ${M.appointments.length}</button>
+                <button class="pill-tab ${curAF === "today" ? "active" : ""}" data-app-filter="today">Oggi ${today.length}</button>
+                <button class="pill-tab ${curAF === "past" ? "active" : ""}" data-app-filter="past">Passati da gestire <span class="chip chip-red ml-1" style="font-size:0.66rem">${past.length}</span></button>
+                <button class="pill-tab ${curAF === "week" ? "active" : ""}" data-app-filter="week">Settimana</button>
+                <button class="pill-tab ${curAF === "all" ? "active" : ""}" data-app-filter="all">Tutti ${M.appointments.length}</button>
               </div>
 
               <div class="card-lg p-6 mb-8" style="background:linear-gradient(135deg,rgba(180,35,24,0.05),rgba(245,138,7,0.04));border-color:rgba(180,35,24,0.15)">
@@ -6673,7 +8667,168 @@
                 <div class="space-y-3">${future.map((a) => appointmentCard(a, false)).join("")}</div>
               </div>
             `;
+        // Wire filters — visual-only highlight/scroll behavior
+        document.querySelectorAll("[data-app-filter]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            FILTERS.appuntamenti.filter = btn.dataset.appFilter;
+            document
+              .querySelectorAll("[data-app-filter]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderAppuntamenti();
+          });
+        });
       }
+
+      // ---------- Modale "Genera link videocall" ----------
+      window.openVideoLinkModal = function (appId) {
+        const a = byId(M.appointments, appId);
+        const c = a ? byId(M.companies, a.company_id) : null;
+        const providers = [
+          {
+            id: "meet",
+            label: "Google Meet",
+            color: "#1A73E8",
+            icon: "<rect x='3' y='6' width='14' height='12' rx='2'/><path d='M17 10l4-2v8l-4-2z'/>",
+          },
+          {
+            id: "zoom",
+            label: "Zoom",
+            color: "#2D8CFF",
+            icon: "<circle cx='12' cy='12' r='10'/><path d='m10 8 6 4-6 4z'/>",
+          },
+          {
+            id: "teams",
+            label: "Microsoft Teams",
+            color: "#5059C9",
+            icon: "<rect x='3' y='6' width='10' height='12' rx='2'/><rect x='14' y='8' width='7' height='8' rx='2'/>",
+          },
+          {
+            id: "whereby",
+            label: "Whereby",
+            color: "#F63D68",
+            icon: "<circle cx='12' cy='12' r='9'/><path d='M8 12h8M12 8v8'/>",
+          },
+        ];
+        const html = `
+          <div style="padding:28px;max-width:520px">
+            <div class="eyebrow mb-2">Videocall</div>
+            <h3 class="display-h2 mb-2">Genera link videocall</h3>
+            <div class="text-[var(--muted)] text-[0.88rem] mb-5">${c?.business_name || "Appuntamento"}${a?.scheduled_at ? " · " + fmtDate(a.scheduled_at) + " " + fmtTime(a.scheduled_at) : ""}</div>
+            <div class="eyebrow mb-2">Scegli provider</div>
+            <div id="vlm-providers" class="grid grid-cols-2 gap-3 mb-5">
+              ${providers
+                .map(
+                  (p, i) => `
+                <label class="card p-4 cursor-pointer flex items-center gap-3" data-provider="${p.id}" style="border-radius:14px;${i === 0 ? "border-color:var(--ink)" : ""}">
+                  <input type="radio" name="vlm-prov" value="${p.id}" ${i === 0 ? "checked" : ""} style="accent-color:${p.color}">
+                  <span class="w-8 h-8 rounded-xl flex items-center justify-center text-white flex-shrink-0" style="background:${p.color}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg>
+                  </span>
+                  <span class="font-medium text-[0.9rem]">${p.label}</span>
+                </label>
+              `,
+                )
+                .join("")}
+            </div>
+            <div id="vlm-status" class="card-plain p-4 mb-4 text-[0.86rem] text-[var(--muted)]" style="min-height:56px">
+              Seleziona un provider e clicca "Genera".
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <button class="btn-primary" id="vlm-generate">Genera link
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+              </button>
+              <button class="btn-secondary" id="vlm-copy" disabled style="opacity:0.5">Copia</button>
+              <button class="btn-secondary" id="vlm-send" disabled style="opacity:0.5">Invia al cliente</button>
+              <button class="btn-ghost" onclick="closeModal()">Chiudi</button>
+            </div>
+          </div>`;
+        openModal(html);
+        // Click rows to toggle radio
+        document.querySelectorAll("[data-provider]").forEach((row) => {
+          row.addEventListener("click", () => {
+            document
+              .querySelectorAll("[data-provider]")
+              .forEach((r) => (r.style.borderColor = "var(--line)"));
+            row.style.borderColor = "var(--ink)";
+            const r = row.querySelector("input[type=radio]");
+            if (r) r.checked = true;
+          });
+        });
+        // Generate flow
+        const genBtn = document.getElementById("vlm-generate");
+        const statusEl = document.getElementById("vlm-status");
+        const copyBtn = document.getElementById("vlm-copy");
+        const sendBtn = document.getElementById("vlm-send");
+        let generatedUrl = null;
+        genBtn.addEventListener("click", () => {
+          const sel = document.querySelector("input[name=vlm-prov]:checked");
+          const prov = sel ? sel.value : "meet";
+          statusEl.innerHTML = `<div class="flex items-center gap-2"><span class="spinner" style="width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--ink);border-radius:50%;display:inline-block;animation:vlm-spin 0.8s linear infinite"></span><span>Creazione stanza ${prov}…</span></div><style>@keyframes vlm-spin{to{transform:rotate(360deg)}}</style>`;
+          setTimeout(() => {
+            const rand = Math.random().toString(36).slice(2, 11);
+            const urls = {
+              meet: `https://meet.google.com/${rand.slice(0, 3)}-${rand.slice(3, 7)}-${rand.slice(7)}`,
+              zoom: `https://zoom.us/j/${Math.floor(Math.random() * 9e9 + 1e9)}`,
+              teams: `https://teams.microsoft.com/l/meetup-join/${rand}`,
+              whereby: `https://whereby.com/hirefast-${rand.slice(0, 6)}`,
+            };
+            generatedUrl = urls[prov];
+            statusEl.innerHTML = `
+              <div class="flex items-center gap-2 mb-2"><span class="chip chip-green">Link pronto</span><span class="text-[0.76rem] text-[var(--muted)]">Scade a 24h dall'appuntamento</span></div>
+              <div class="font-mono text-[0.82rem] text-[var(--teal)] break-all">${generatedUrl}</div>`;
+            copyBtn.disabled = false;
+            copyBtn.style.opacity = "1";
+            sendBtn.disabled = false;
+            sendBtn.style.opacity = "1";
+          }, 800);
+        });
+        copyBtn.addEventListener("click", () => {
+          if (!generatedUrl) return;
+          navigator.clipboard?.writeText(generatedUrl);
+          showToast("Link copiato negli appunti");
+        });
+        sendBtn.addEventListener("click", () => {
+          if (!generatedUrl) return;
+          showToast("Link inviato via email al contatto");
+          setTimeout(closeModal, 600);
+        });
+      };
+
+      // ---------- Nuovo appuntamento stub ----------
+      window.openNewAppointmentModal = function () {
+        openModal(`
+          <div style="padding:28px;max-width:520px">
+            <div class="eyebrow mb-2">Calendar</div>
+            <h3 class="display-h2 mb-4">Nuovo appuntamento</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="text-[0.82rem] font-medium mb-1 block">Lead</label>
+                <select class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]">
+                  ${M.leads
+                    .slice(0, 10)
+                    .map((l) => {
+                      const cc = byId(M.companies, l.company_id);
+                      return `<option value="${l.id}">${cc?.business_name} — ${l.position_title}</option>`;
+                    })
+                    .join("")}
+                </select>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div><label class="text-[0.82rem] font-medium mb-1 block">Data</label><input type="date" value="2026-04-20" class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]"></div>
+                <div><label class="text-[0.82rem] font-medium mb-1 block">Ora</label><input type="time" value="10:00" class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]"></div>
+              </div>
+              <div>
+                <label class="text-[0.82rem] font-medium mb-1 block">Tipo</label>
+                <div class="pill-tabs"><button class="pill-tab active">Video call</button><button class="pill-tab">Setter call</button><button class="pill-tab">Closer call</button><button class="pill-tab">In presenza</button></div>
+              </div>
+            </div>
+            <div class="flex gap-2 mt-5">
+              <button class="btn-primary" onclick="closeModal()">Crea</button>
+              <button class="btn-ghost" onclick="closeModal()">Annulla</button>
+            </div>
+          </div>`);
+      };
 
       /* ============================================================
        * PREVENTIVI
@@ -6733,17 +8888,33 @@
               `);
         };
 
+        const curF = FILTERS.preventivi.filter || "all";
+        const curQ = (FILTERS.preventivi.search || "").toLowerCase();
+        let filteredQuotes = [...M.quotes];
+        if (curF !== "all")
+          filteredQuotes = filteredQuotes.filter((q) => q.status === curF);
+        if (curQ) {
+          filteredQuotes = filteredQuotes.filter((q) => {
+            const c = byId(M.companies, q.company_id);
+            return (
+              (c?.business_name || "").toLowerCase().includes(curQ) ||
+              (q.quote_number || "").toLowerCase().includes(curQ) ||
+              (q.quote_type || "").toLowerCase().includes(curQ)
+            );
+          });
+        }
+
         document.getElementById("preventivi-content").innerHTML = `
-              ${sectionHeader("Preventivi", "Tutti i preventivi", `${M.quotes.length} preventivi · ${euro(sentTot)} in attesa di firma.`, '<button class="btn-primary">Nuovo preventivo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>')}
+              ${sectionHeader("Preventivi", "Tutti i preventivi", `${M.quotes.length} preventivi · ${euro(sentTot)} in attesa di firma.`, '<button class="btn-primary" onclick="openNewQuoteModal()">Nuovo preventivo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>')}
               <div class="flex flex-wrap gap-3 items-center mb-6">
                 <div class="pill-tabs">
-                  <button class="pill-tab active">Tutti ${M.quotes.length}</button>
-                  <button class="pill-tab">Bozze ${byStatus("draft").length}</button>
-                  <button class="pill-tab">Inviati ${byStatus("sent").length}</button>
-                  <button class="pill-tab">Accettati ${byStatus("accepted").length}</button>
-                  <button class="pill-tab">Rifiutati ${byStatus("rejected").length}</button>
+                  <button class="pill-tab ${curF === "all" ? "active" : ""}" data-q-filter="all">Tutti ${M.quotes.length}</button>
+                  <button class="pill-tab ${curF === "draft" ? "active" : ""}" data-q-filter="draft">Bozze ${byStatus("draft").length}</button>
+                  <button class="pill-tab ${curF === "sent" ? "active" : ""}" data-q-filter="sent">Inviati ${byStatus("sent").length}</button>
+                  <button class="pill-tab ${curF === "accepted" ? "active" : ""}" data-q-filter="accepted">Accettati ${byStatus("accepted").length}</button>
+                  <button class="pill-tab ${curF === "rejected" ? "active" : ""}" data-q-filter="rejected">Rifiutati ${byStatus("rejected").length}</button>
                 </div>
-                <div class="search ml-auto" style="max-width:320px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input placeholder="Cerca preventivo…"/></div>
+                <div class="search ml-auto" style="max-width:320px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="q-search-input" placeholder="Cerca preventivo…" value="${FILTERS.preventivi.search || ""}"/></div>
               </div>
               <div class="card-lg overflow-hidden mobile-cards">
                 <table class="w-full text-left">
@@ -6758,11 +8929,195 @@
                       <th class="py-4 px-5 font-medium text-right">Azioni</th>
                     </tr>
                   </thead>
-                  <tbody>${M.quotes.map(row).join("").replace(/py-4/g, "py-4 px-5")}</tbody>
+                  <tbody>${filteredQuotes.length ? filteredQuotes.map(row).join("").replace(/py-4/g, "py-4 px-5") : '<tr><td colspan="7" class="py-10 text-center text-[var(--muted)]">Nessun preventivo corrisponde ai filtri.</td></tr>'}</tbody>
                 </table>
               </div>
             `;
+        // Wire filters
+        document.querySelectorAll("[data-q-filter]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            FILTERS.preventivi.filter = btn.dataset.qFilter;
+            renderPreventivi();
+          });
+        });
+        const qsi = document.getElementById("q-search-input");
+        if (qsi) {
+          qsi.addEventListener("input", (e) => {
+            FILTERS.preventivi.search = e.target.value || "";
+            renderPreventivi();
+          });
+        }
       }
+
+      // ---------- Nuovo preventivo — fullscreen modal con step template/zero ----------
+      window.openNewQuoteModal = function () {
+        const tpls = M.quote_templates || [];
+        const html = `
+          <div id="nq-modal" style="position:fixed;inset:0;background:var(--paper);z-index:60;overflow-y:auto">
+            <div style="max-width:960px;margin:0 auto;padding:32px 24px">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <div class="eyebrow mb-1">Nuovo preventivo</div>
+                  <h2 class="display-h1" style="font-size:2rem">Crea nuovo preventivo</h2>
+                </div>
+                <button class="btn-ghost" onclick="closeNewQuoteModal()">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  Chiudi
+                </button>
+              </div>
+              <div class="card-lg p-6 mb-6">
+                <div class="eyebrow mb-3">Step 1 · Punto di partenza</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4" id="nq-start">
+                  <label class="card p-5 cursor-pointer" data-start="template" style="border-color:var(--ink)">
+                    <input type="radio" name="nq-start" value="template" checked style="accent-color:var(--ink)">
+                    <div class="font-semibold mb-1 mt-2">Parti da un template</div>
+                    <div class="text-[0.82rem] text-[var(--muted)]">${tpls.length} template pronti, precompilati con prezzo base e termini.</div>
+                  </label>
+                  <label class="card p-5 cursor-pointer" data-start="zero">
+                    <input type="radio" name="nq-start" value="zero" style="accent-color:var(--ink)">
+                    <div class="font-semibold mb-1 mt-2">Parti da zero</div>
+                    <div class="text-[0.82rem] text-[var(--muted)]">Form vuoto, per un preventivo custom dettagliato.</div>
+                  </label>
+                </div>
+                <div id="nq-template-list" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  ${tpls
+                    .map(
+                      (t, i) => `
+                    <div class="card p-4 cursor-pointer nq-tpl" data-tpl="${t.id}" style="${i === 0 ? "border-color:var(--ink)" : ""}">
+                      <div class="flex items-start justify-between gap-2 mb-2">
+                        <div class="font-semibold text-[0.92rem]">${t.name}</div>
+                        <span class="chip chip-orange">${euro(t.base_amount)}</span>
+                      </div>
+                      <div class="text-[0.78rem] text-[var(--muted)] mb-2">${t.quote_type.replace(/_/g, " ")}</div>
+                      <div class="text-[0.8rem]">${t.default_notes.slice(0, 130)}${t.default_notes.length > 130 ? "…" : ""}</div>
+                    </div>`,
+                    )
+                    .join("")}
+                </div>
+              </div>
+
+              <div class="card-lg p-6 mb-6">
+                <div class="eyebrow mb-3">Step 2 · Dati preventivo</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-[0.82rem] font-medium mb-1 block">Lead / Cliente</label>
+                    <select class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]" id="nq-lead">
+                      ${M.leads
+                        .slice(0, 15)
+                        .map((l) => {
+                          const cc = byId(M.companies, l.company_id);
+                          return `<option value="${l.id}">${cc?.business_name} — ${l.position_title}</option>`;
+                        })
+                        .join("")}
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-[0.82rem] font-medium mb-1 block">Tipo preventivo</label>
+                    <select class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]" id="nq-type">
+                      <option value="interviews_package">Pacchetto colloqui</option>
+                      <option value="subscription">Subscription</option>
+                      <option value="test_partnership">Pilot partnership</option>
+                      <option value="setup_fee_subscription">Setup + subscription</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-[0.82rem] font-medium mb-1 block">Importo (€)</label>
+                    <input type="number" value="4500" class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]" id="nq-amount">
+                  </div>
+                  <div>
+                    <label class="text-[0.82rem] font-medium mb-1 block">Payment terms</label>
+                    <input type="text" value="Mensile anticipato - 30gg DF" class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]" id="nq-terms">
+                  </div>
+                  <div class="md:col-span-2">
+                    <label class="text-[0.82rem] font-medium mb-1 block">Note</label>
+                    <textarea rows="4" class="w-full p-3 rounded-xl border border-[var(--line)] bg-[var(--paper)]" id="nq-notes"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-lg p-6 mb-6">
+                <div class="eyebrow mb-3">Step 3 · Anteprima</div>
+                <div class="card-plain p-5">
+                  <div class="flex items-start justify-between mb-2 flex-wrap gap-2">
+                    <div>
+                      <div class="font-mono text-[0.82rem] text-[var(--muted)]">Q-2026-XXX</div>
+                      <div class="font-semibold" id="nq-prev-client">—</div>
+                    </div>
+                    <div class="display" style="font-size:1.8rem" id="nq-prev-amount">€ 4.500</div>
+                  </div>
+                  <div class="text-[0.86rem] text-[var(--muted)]" id="nq-prev-terms">Mensile anticipato - 30gg DF</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-end gap-2 sticky bottom-0 bg-[var(--paper)] py-4 border-t border-[var(--line)]">
+                <button class="btn-ghost" onclick="closeNewQuoteModal()">Annulla</button>
+                <button class="btn-secondary" onclick="showToast('Bozza salvata');closeNewQuoteModal()">Salva come bozza</button>
+                <button class="btn-primary" onclick="showToast('Preventivo creato e pronto per invio');closeNewQuoteModal()">Crea e invia
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>`;
+        const mount = document.createElement("div");
+        mount.innerHTML = html;
+        document.body.appendChild(mount.firstElementChild);
+
+        // Start-type toggle
+        document.querySelectorAll("[data-start]").forEach((el) => {
+          el.addEventListener("click", () => {
+            document
+              .querySelectorAll("[data-start]")
+              .forEach((x) => (x.style.borderColor = "var(--line)"));
+            el.style.borderColor = "var(--ink)";
+            const r = el.querySelector("input[type=radio]");
+            if (r) r.checked = true;
+            document.getElementById("nq-template-list").style.display =
+              el.dataset.start === "template" ? "" : "none";
+          });
+        });
+        // Template selection
+        document.querySelectorAll(".nq-tpl").forEach((el) => {
+          el.addEventListener("click", () => {
+            document
+              .querySelectorAll(".nq-tpl")
+              .forEach((x) => (x.style.borderColor = "var(--line)"));
+            el.style.borderColor = "var(--ink)";
+            const t = (M.quote_templates || []).find(
+              (x) => x.id === el.dataset.tpl,
+            );
+            if (!t) return;
+            document.getElementById("nq-type").value = t.quote_type;
+            document.getElementById("nq-amount").value = t.base_amount;
+            document.getElementById("nq-terms").value = t.default_payment_terms;
+            document.getElementById("nq-notes").value = t.default_notes;
+            refreshPreview();
+          });
+        });
+        function refreshPreview() {
+          const leadEl = document.getElementById("nq-lead");
+          const amtEl = document.getElementById("nq-amount");
+          const termsEl = document.getElementById("nq-terms");
+          const leadId = leadEl?.value;
+          const l = leadId ? byId(M.leads, leadId) : null;
+          const c = l ? byId(M.companies, l.company_id) : null;
+          document.getElementById("nq-prev-client").textContent =
+            c?.business_name || "—";
+          document.getElementById("nq-prev-amount").textContent = euro(
+            Number(amtEl?.value || 0),
+          );
+          document.getElementById("nq-prev-terms").textContent =
+            termsEl?.value || "";
+        }
+        ["nq-lead", "nq-amount", "nq-terms"].forEach((id) => {
+          const el = document.getElementById(id);
+          el?.addEventListener("input", refreshPreview);
+          el?.addEventListener("change", refreshPreview);
+        });
+        refreshPreview();
+      };
+      window.closeNewQuoteModal = function () {
+        document.getElementById("nq-modal")?.remove();
+      };
 
       /* ============================================================
        * CONVERSAZIONI
@@ -6770,8 +9125,22 @@
       let SELECTED_CONV_ID = "cv-001";
       function renderConversazioni() {
         const content = document.getElementById("conversazioni-content");
+        const waba = M.waba_config || {};
+        const wabaNumber = waba.shared_phone_number || "+39 02 9476 8810";
         content.innerHTML = `
               ${sectionHeader("Conversazioni", "Inbox unificata", "Email + WhatsApp dei tuoi lead, in un posto solo.", "")}
+              <div class="card-lg mb-5 p-4" style="background:linear-gradient(135deg,rgba(37,211,102,0.07),rgba(21,81,95,0.04));border-color:rgba(37,211,102,0.2)">
+                <div class="flex items-center gap-3 flex-wrap">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#25d366;color:white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.7 11.7 0 0 0 12.2 0C5.6 0 .2 5.4.2 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.7a11.9 11.9 0 0 0 5.9 1.6c6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.6-8.4zM12.2 22a10 10 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a10 10 0 1 1 8.4 4.6z"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-semibold text-[0.96rem]">WhatsApp Business API attivo · <span class="font-mono">${wabaNumber}</span></div>
+                    <div class="text-[0.84rem] text-[var(--muted)]">${waba.note || "Numero condiviso del team: i messaggi sono instradati al commerciale owner della lead via mapping WABA."}</div>
+                  </div>
+                  <span class="chip chip-green">Collegato</span>
+                </div>
+              </div>
               <div class="grid grid-cols-1 lg:grid-cols-5 gap-6" style="min-height:70vh">
                 <div class="card-lg lg:col-span-2 p-3 view-list" style="max-height:76vh;overflow-y:auto" id="conv-list"></div>
                 <div class="card-lg lg:col-span-3 p-0 flex flex-col view-detail" id="conv-thread" style="max-height:76vh"></div>
@@ -7065,6 +9434,105 @@
           points.map((p) => `L${p[0]},${p[1]}`).join(" ") +
           ` L${points[points.length - 1][0]},${h - pad} Z`;
 
+        // ---- Breakdown 7 mini-card: filtra su sales del POD Milano Alpha ----
+        const podSalesIds = (M.users || [])
+          .filter(
+            (u) =>
+              u.pod === "Milano Alpha" &&
+              (u.role === "sales" ||
+                u.role === "setter" ||
+                u.role === "closer"),
+          )
+          .map((u) => u.id);
+        const podLeads = (M.leads || []).filter((l) =>
+          podSalesIds.includes(l.assigned_to_user_id),
+        );
+        // Ranges
+        const now = new Date();
+        const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+        const countBy = (fn) => podLeads.filter(fn).length;
+        const assignedMtd = podLeads.filter((l) => {
+          const d = new Date(l.assigned_at || l.created_at || 0);
+          return d >= monthStart;
+        }).length;
+        const qualCount = countBy((l) => l.status === "qualified");
+        const offerCount = countBy(
+          (l) => l.status === "proposal_sent" || l.status === "negotiation",
+        );
+        const awaitingContract = countBy(
+          (l) =>
+            l.status === "contract_drafting" ||
+            l.status === "awaiting_signature",
+        );
+        const awaitingMI = countBy((l) => l.status === "market_investigation");
+        // Indagine svolta — da market_investigations approved_for_quote=true
+        const miDone = (M.market_investigations || []).filter(
+          (mi) => mi.approved_for_quote === true,
+        ).length;
+        const discardedCount = countBy(
+          (l) => l.status === "discarded" || l.status === "postponed",
+        );
+
+        const statusBreakdown = [
+          {
+            k: "Assegnati MTD",
+            v: assignedMtd,
+            color: "var(--teal)",
+            icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 11l-3-3-3 3M19 8v11",
+          },
+          {
+            k: "Qualificati",
+            v: qualCount,
+            color: "#15803d",
+            icon: "M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3",
+          },
+          {
+            k: "Offerta",
+            v: offerCount,
+            color: "var(--orange)",
+            icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8",
+          },
+          {
+            k: "Attesa contratto",
+            v: awaitingContract,
+            color: "var(--yellow)",
+            icon: "M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11",
+          },
+          {
+            k: "Attesa indagine",
+            v: awaitingMI,
+            color: "#8b5cf6",
+            icon: "M12 8v4l3 3M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z",
+          },
+          {
+            k: "Indagine svolta",
+            v: miDone,
+            color: "#0ea5e9",
+            icon: "M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM11 8v7M8 11h6",
+          },
+          {
+            k: "Scartate / Non valide",
+            v: discardedCount,
+            color: "#b42318",
+            icon: "M18 6 6 18M6 6l12 12",
+          },
+        ];
+        const breakdownCards = statusBreakdown
+          .map(
+            (c) => `
+              <div class="card p-4" style="border-left:3px solid ${c.color};min-width:0">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:${c.color}20;color:${c.color}">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${c.icon}"/></svg>
+                  </div>
+                  <div class="eyebrow" style="font-size:0.62rem;letter-spacing:0.08em;line-height:1.1">${c.k}</div>
+                </div>
+                <div class="display" style="font-size:1.9rem;line-height:1;color:${c.color}">${c.v}</div>
+              </div>
+            `,
+          )
+          .join("");
+
         document.getElementById("performance-content").innerHTML = `
               ${sectionHeader("POD Milano Alpha", "Performance team", "Aprile 2026 · metriche live del POD.", `<div class="flex gap-3"><button class="btn-secondary">Mese scorso</button><button class="btn-secondary">Apr 2026</button></div>`)}
 
@@ -7085,6 +9553,19 @@
                     <div class="text-[0.88rem] text-[var(--muted)]">Il carico attuale di Marco Ricci mostra tempo medio di qualifica superiore ai peer. Valuta riassegnazione di 2 lead a Luca o Chiara.</div>
                   </div>
                   <button class="btn-secondary">Riequilibra</button>
+                </div>
+              </div>
+
+              <div class="mb-8">
+                <div class="flex items-end justify-between mb-3 flex-wrap gap-2">
+                  <div>
+                    <div class="eyebrow mb-1">Stato pipeline</div>
+                    <div class="display-h2">Breakdown per stato · POD Milano Alpha</div>
+                  </div>
+                  <div class="text-[0.78rem] text-[var(--muted)]">Filtrato sui ${podSalesIds.length} sales del POD.</div>
+                </div>
+                <div class="geo-breakdown-grid" style="display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch">
+                  ${breakdownCards}
                 </div>
               </div>
 
@@ -7133,6 +9614,198 @@
         const s = M.commissions.sales_view;
         const d = M.commissions.director_view;
         const mtd = s.month_to_date;
+
+        // ---- Trimestre in corso (user) ----
+        const myQuarter = (M.quarterly_commissions || []).find(
+          (q) => q.user_id === "u-gab-001",
+        );
+        const myEquity = (M.equity_grants || []).find(
+          (g) => g.user_id === "u-gab-001" && g.grant_year === 2026,
+        );
+
+        function quarterCard(q, opts) {
+          opts = opts || {};
+          if (!q) return "";
+          const t = q.tiers;
+          const cur = q.current_revenue;
+          const tgt = q.revenue_target;
+          const pct = Math.min(100, (cur / tgt) * 100);
+          const tierLabel =
+            q.tier_achieved === "none"
+              ? "Nessun tier"
+              : q.tier_achieved.toUpperCase();
+          const tierChipColor =
+            q.tier_achieved === "l3"
+              ? "chip-green"
+              : q.tier_achieved === "l2"
+                ? "chip-yellow"
+                : q.tier_achieved === "l1"
+                  ? "chip-orange"
+                  : "chip-soft";
+          let nextMsg = "";
+          if (q.tier_achieved === "none") {
+            nextMsg = `Al tier <strong>L1</strong> mancano <strong>${euro(Math.max(0, t.l1.threshold - cur))}</strong>`;
+          } else if (q.tier_achieved === "l1") {
+            nextMsg = `Sei al tier <strong>L1</strong>, <strong>${euro(Math.max(0, t.l2.threshold - cur))}</strong> al <strong>L2</strong>`;
+          } else if (q.tier_achieved === "l2") {
+            nextMsg = `Sei al tier <strong>L2</strong>, <strong>${euro(Math.max(0, t.l3.threshold - cur))}</strong> al <strong>L3</strong>`;
+          } else {
+            nextMsg = `Hai raggiunto il tier massimo <strong>L3</strong>. Bravo.`;
+          }
+          const box = (lbl, thr, rate, active) => `
+            <div class="card-plain p-4" style="border:1px solid ${active ? "var(--orange)" : "var(--line)"};background:${active ? "rgba(245,138,7,0.07)" : "transparent"}">
+              <div class="eyebrow mb-1">${lbl}${active ? ' <span class="chip chip-orange" style="font-size:0.6rem;padding:1px 6px;margin-left:4px">corrente</span>' : ""}</div>
+              <div class="font-mono font-bold text-[1rem]">${euro(thr)}</div>
+              <div class="text-[0.74rem] text-[var(--muted)]">${rate}% commission</div>
+            </div>`;
+          const size = opts.compact ? "2rem" : "3rem";
+          return `
+            <div class="card-lg p-${opts.compact ? "5" : "7"} mb-6" style="background:linear-gradient(135deg,rgba(245,138,7,0.05),rgba(21,81,95,0.03));border-color:rgba(245,138,7,0.25)">
+              <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+                <div>
+                  <div class="eyebrow mb-1">Trimestre in corso · Q2 2026</div>
+                  <div class="display" style="font-size:${size};line-height:1"><span style="color:var(--orange)">${euro(cur)}</span><span style="color:var(--muted);font-size:0.6em"> / ${euro(tgt)}</span></div>
+                </div>
+                <div class="text-right">
+                  <span class="chip ${tierChipColor}" style="font-weight:600">Tier ${tierLabel}</span>
+                  <div class="text-[0.78rem] text-[var(--muted)] mt-2">Stimato: <strong class="font-mono">${euro(q.earned_amount)}</strong></div>
+                </div>
+              </div>
+              <div class="pbar mb-2" style="height:12px;background:rgba(21,81,95,0.08)"><div style="width:${pct}%;background:linear-gradient(90deg,var(--orange),var(--teal));border-radius:8px"></div></div>
+              <div class="text-[0.85rem] text-[var(--ink-60)] mb-4">${nextMsg}</div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+                ${box("L1", t.l1.threshold, t.l1.rate, q.tier_achieved === "l1")}
+                ${box("L2", t.l2.threshold, t.l2.rate, q.tier_achieved === "l2")}
+                ${box("L3", t.l3.threshold, t.l3.rate, q.tier_achieved === "l3")}
+              </div>
+            </div>
+          `;
+        }
+
+        function equityCard(g, opts) {
+          opts = opts || {};
+          if (!g) return "";
+          const t = g.tiers;
+          const cur = g.revenue_achieved;
+          // Trova il prossimo tier
+          let nextTier = null;
+          if (g.tier_level === "none") nextTier = "l1";
+          else if (g.tier_level === "l1") nextTier = "l2";
+          else if (g.tier_level === "l2") nextTier = "l3";
+          const activeThr =
+            g.tier_level !== "none"
+              ? t[g.tier_level].threshold
+              : t.l1.threshold;
+          const targetThr = nextTier ? t[nextTier].threshold : t.l3.threshold;
+          const pct = Math.min(100, (cur / targetThr) * 100);
+          const tierChipColor =
+            g.tier_level === "l3"
+              ? "chip-green"
+              : g.tier_level === "l2"
+                ? "chip-yellow"
+                : g.tier_level === "l1"
+                  ? "chip-orange"
+                  : "chip-soft";
+          const size = opts.compact ? "1.7rem" : "2.4rem";
+          const tierBox = (lbl, thr, shares, active) => `
+            <div class="card-plain p-4" style="border:1px solid ${active ? "var(--teal)" : "var(--line)"};background:${active ? "rgba(21,81,95,0.06)" : "transparent"}">
+              <div class="eyebrow mb-1">${lbl}${active ? ' <span class="chip chip-teal" style="font-size:0.6rem;padding:1px 6px;margin-left:4px">attuale</span>' : ""}</div>
+              <div class="font-mono font-bold text-[1rem]">${euro(shares)}</div>
+              <div class="text-[0.74rem] text-[var(--muted)]">@ ${euro(thr)} revenue</div>
+            </div>`;
+          let pacer = "";
+          if (nextTier) {
+            pacer = `Al passo attuale toccheresti il tier <strong>${nextTier.toUpperCase()}</strong> a fine anno.`;
+          } else {
+            pacer = `Sei già al tier massimo annuale <strong>L3</strong>.`;
+          }
+          return `
+            <div class="card-lg p-${opts.compact ? "5" : "7"} mb-6" style="background:linear-gradient(135deg,rgba(21,81,95,0.06),rgba(245,138,7,0.02));border-color:rgba(21,81,95,0.22)">
+              <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+                <div>
+                  <div class="eyebrow mb-1">Equity annuale · 2026</div>
+                  <div class="display" style="font-size:${size};line-height:1;color:var(--teal)">${euro(g.shares_value_eur)}</div>
+                  <div class="text-[0.8rem] text-[var(--muted)] mt-1">Revenue anno: <strong class="font-mono">${euro(cur)}</strong></div>
+                </div>
+                <div class="text-right">
+                  <span class="chip ${tierChipColor}" style="font-weight:600">Tier ${g.tier_level === "none" ? "nessuno" : g.tier_level.toUpperCase()}</span>
+                  <div class="text-[0.76rem] text-[var(--muted)] mt-2">Vesting <strong class="font-mono">31/12/2026</strong></div>
+                </div>
+              </div>
+              <div class="pbar mb-2" style="height:10px;background:rgba(21,81,95,0.08)"><div style="width:${pct}%;background:linear-gradient(90deg,var(--teal),var(--orange));border-radius:8px"></div></div>
+              <div class="text-[0.85rem] text-[var(--ink-60)] mb-4">${pacer}</div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+                ${tierBox("L1", t.l1.threshold, t.l1.shares_value, g.tier_level === "l1")}
+                ${tierBox("L2", t.l2.threshold, t.l2.shares_value, g.tier_level === "l2")}
+                ${tierBox("L3", t.l3.threshold, t.l3.shares_value, g.tier_level === "l3")}
+              </div>
+            </div>
+          `;
+        }
+
+        // ---- Team POD cards (Luca, Chiara, Marco) ----
+        const podSales = ["u-luca-002", "u-chiara-003", "u-marco-004"];
+        const podTeamCards = podSales
+          .map((uid) => {
+            const usr = byId(M.users, uid);
+            const q = (M.quarterly_commissions || []).find(
+              (x) => x.user_id === uid,
+            );
+            const g = (M.equity_grants || []).find(
+              (x) => x.user_id === uid && x.grant_year === 2026,
+            );
+            if (!q || !usr) return "";
+            const pctQ = Math.min(
+              100,
+              (q.current_revenue / q.revenue_target) * 100,
+            );
+            const tierQ =
+              q.tier_achieved === "none" ? "—" : q.tier_achieved.toUpperCase();
+            const tierQColor =
+              q.tier_achieved === "l3"
+                ? "chip-green"
+                : q.tier_achieved === "l2"
+                  ? "chip-yellow"
+                  : q.tier_achieved === "l1"
+                    ? "chip-orange"
+                    : "chip-soft";
+            const tierEq =
+              g && g.tier_level !== "none" ? g.tier_level.toUpperCase() : "—";
+            const tierEqColor =
+              g && g.tier_level === "l3"
+                ? "chip-green"
+                : g && g.tier_level === "l2"
+                  ? "chip-yellow"
+                  : g && g.tier_level === "l1"
+                    ? "chip-orange"
+                    : "chip-soft";
+            const sharesVal = g ? g.shares_value_eur : 0;
+            return `
+              <div class="card-lg p-5">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="avatar">${userInitials(uid)}</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-semibold truncate">${usr.full_name}</div>
+                    <div class="text-[0.74rem] text-[var(--muted)]">Sales · POD Milano Alpha</div>
+                  </div>
+                </div>
+                <div class="eyebrow mb-1">Trimestre Q2</div>
+                <div class="flex items-baseline gap-2 mb-2">
+                  <div class="font-mono font-semibold text-[1.05rem]">${euro(q.current_revenue)}</div>
+                  <div class="text-[0.74rem] text-[var(--muted)]">/ ${euro(q.revenue_target)}</div>
+                  <span class="chip ${tierQColor} ml-auto" style="font-size:0.7rem">Tier ${tierQ}</span>
+                </div>
+                <div class="pbar mb-3" style="height:8px"><div style="width:${pctQ}%;background:var(--orange)"></div></div>
+                <hr class="divider-dash my-3">
+                <div class="eyebrow mb-1">Equity 2026</div>
+                <div class="flex items-center gap-2">
+                  <div class="font-mono font-semibold text-[1rem]">${euro(sharesVal)}</div>
+                  <span class="chip ${tierEqColor} ml-auto" style="font-size:0.7rem">Tier ${tierEq}</span>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
 
         const breakdown = [
           {
@@ -7214,6 +9887,9 @@
                   </div>
                 </div>
 
+                ${quarterCard(myQuarter)}
+                ${equityCard(myEquity)}
+
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                   <div class="card-lg lg:col-span-2 p-6 mobile-cards">
                     <div class="eyebrow mb-1">Contratti che contribuiscono</div>
@@ -7244,6 +9920,14 @@
                   <div class="card p-5"><div class="eyebrow mb-1">Revenue POD</div><div class="display" style="font-size:2rem">${euro(d.pod_revenue)}</div></div>
                   <div class="card p-5"><div class="eyebrow mb-1">Payout totale</div><div class="display" style="font-size:2rem">${euro(d.pod_total_payout)}</div></div>
                   <div class="card p-5"><div class="eyebrow mb-1">EBIT POD (stimato)</div><div class="display" style="font-size:2rem;color:var(--green)">${euro(d.ebit_pod_estimated)}</div><div class="text-[0.78rem] text-[var(--muted)]">Margine ${(d.ebit_margin * 100).toFixed(1)}%</div></div>
+                </div>
+
+                <div class="mb-5">
+                  <div class="eyebrow mb-1">Trimestre Q2 2026 · Equity 2026</div>
+                  <div class="display-h2 mb-4">Team POD — progress trimestrale & equity</div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    ${podTeamCards}
+                  </div>
                 </div>
                 <div class="card-lg overflow-hidden mobile-cards">
                   <div class="p-6 border-b border-[var(--line)]"><div class="eyebrow mb-1">Team</div><div class="display-h2">Breakdown per sales</div></div>
@@ -7278,10 +9962,39 @@
       }
 
       /* ============================================================
-       * GEO VENDITE
+       * GEO VENDITE — drill-down 3 livelli (regions → cities → companies)
        * ============================================================ */
       let __mapInstance = null;
-      let __currentMetric = "revenue_total";
+      window.__geoState = window.__geoState || {
+        level: "regions",
+        regionId: null,
+        regionName: null,
+        cityName: null,
+        metric: "revenue",
+      };
+
+      // Map UI metric → field on the dataset (regions & cities use parallel keys)
+      function __geoMetricField(metric, entity) {
+        // entity: 'region' | 'city'
+        if (metric === "revenue") return "revenue_total";
+        if (metric === "spend") return "spend_total";
+        if (metric === "leads") return "leads_count";
+        if (metric === "clients") return "clients_count";
+        if (metric === "roas") return "roas";
+        return "revenue_total";
+      }
+      function __geoMetricLabel(metric) {
+        return (
+          {
+            revenue: "Revenue",
+            spend: "Spend",
+            leads: "Lead",
+            clients: "Clienti",
+            roas: "ROAS",
+          }[metric] || "Revenue"
+        );
+      }
+
       function initGeoMap() {
         if (typeof L === "undefined") return;
         // Skip Leaflet init on mobile (map hidden)
@@ -7290,6 +10003,7 @@
         if (!mapEl) return;
         if (__mapInstance) {
           __mapInstance.invalidateSize();
+          drawGeoMarkers();
           return;
         }
         __mapInstance = L.map("map", { scrollWheelZoom: false }).setView(
@@ -7300,23 +10014,57 @@
           attribution: "&copy; OpenStreetMap",
           maxZoom: 18,
         }).addTo(__mapInstance);
-        drawGeoMarkers(__currentMetric);
+        drawGeoMarkers();
       }
-      function drawGeoMarkers(metric) {
+
+      function drawGeoMarkers() {
         if (!__mapInstance) return;
         __mapInstance.eachLayer((layer) => {
           if (layer instanceof L.CircleMarker) __mapInstance.removeLayer(layer);
         });
-        const data = M.geo_sales_data;
-        const vals = data.map((d) => d[metric] || 0);
+        const st = window.__geoState;
+        let points = [];
+        if (st.level === "regions") {
+          const field = __geoMetricField(st.metric, "region");
+          points = (M.geo_regions || []).map((r) => ({
+            lat: r.lat,
+            lng: r.lng,
+            title: r.name,
+            sub: `${r.cities_count} città · ${r.clients_count} clienti`,
+            value: r[field] || 0,
+            raw: r,
+          }));
+          __mapInstance.flyTo([42, 12.5], 6, { duration: 0.6 });
+        } else if (st.level === "cities") {
+          const field = __geoMetricField(st.metric, "city");
+          const cities = (M.geo_sales_data || []).filter(
+            (c) => c.region === st.regionName,
+          );
+          points = cities.map((c) => ({
+            lat: c.lat,
+            lng: c.lng,
+            title: c.city,
+            sub: `${c.province} · ${c.clients_count} clienti`,
+            value: c[field] || 0,
+            raw: c,
+          }));
+          if (cities.length) {
+            const lat0 = cities.reduce((s, c) => s + c.lat, 0) / cities.length;
+            const lng0 = cities.reduce((s, c) => s + c.lng, 0) / cities.length;
+            __mapInstance.flyTo([lat0, lng0], 8, { duration: 0.6 });
+          }
+        } else {
+          // companies level — hide map, nothing to draw
+          return;
+        }
+        const vals = points.map((p) => p.value);
         const maxV = Math.max(...vals, 1);
-        data.forEach((d) => {
-          const v = d[metric] || 0;
-          const ratio = v / maxV;
-          const radius = 6 + ratio * 28;
+        points.forEach((p) => {
+          const ratio = (p.value || 0) / maxV;
+          const radius = 7 + ratio * 30;
           const color =
             ratio > 0.6 ? "#15803d" : ratio > 0.3 ? "#f58a07" : "#b42318";
-          const marker = L.circleMarker([d.lat, d.lng], {
+          const marker = L.circleMarker([p.lat, p.lng], {
             radius,
             color,
             fillColor: color,
@@ -7325,135 +10073,272 @@
           }).addTo(__mapInstance);
           marker.bindPopup(`
                 <div style="font-family:Inter,sans-serif;min-width:200px">
-                  <div style="font-weight:600;font-size:1rem;margin-bottom:6px">${d.city} <span style="color:#6b6862;font-weight:400">${d.province}</span></div>
-                  <div style="display:grid;grid-template-columns:auto auto;gap:4px 10px;font-size:0.82rem">
-                    <span style="color:#6b6862">Clienti</span><strong>${d.clients_count}</strong>
-                    <span style="color:#6b6862">Lead</span><strong>${d.leads_count}</strong>
-                    <span style="color:#6b6862">Spend</span><strong>${euro(d.spend_total)}</strong>
-                    <span style="color:#6b6862">Revenue</span><strong>${euro(d.revenue_total)}</strong>
-                    <span style="color:#6b6862">ROAS</span><strong>${d.roas.toFixed(2)}x</strong>
-                    <span style="color:#6b6862">CPL</span><strong>€${d.cpl}</strong>
-                  </div>
+                  <div style="font-weight:600;font-size:1rem;margin-bottom:6px">${p.title}</div>
+                  <div style="color:#6b6862;font-size:0.82rem;margin-bottom:6px">${p.sub}</div>
+                  <div style="font-size:0.82rem"><strong>${__geoMetricLabel(window.__geoState.metric)}:</strong> ${window.__geoState.metric === "roas" ? (p.value || 0).toFixed(2) + "x" : window.__geoState.metric === "leads" || window.__geoState.metric === "clients" ? p.value : euro(p.value)}</div>
                 </div>
               `);
         });
       }
-      function colorGeoCards(metric) {
-        // Highlight mobile city-cards by metric ranking
-        const data = M.geo_sales_data;
-        const vals = data.map((d) => d[metric] || 0);
-        const maxV = Math.max(...vals, 1);
-        const sorted = [...data].sort(
-          (a, b) => b.revenue_total - a.revenue_total,
-        );
-        const rows = document.querySelectorAll(".geo-cards tbody tr");
-        rows.forEach((tr, idx) => {
-          const d = sorted[idx];
-          if (!d) return;
-          const v = d[metric] || 0;
-          const ratio = v / maxV;
-          const color =
-            ratio > 0.6
-              ? "rgba(21,128,61,0.06)"
-              : ratio > 0.3
-                ? "rgba(245,138,7,0.05)"
-                : "rgba(180,35,24,0.04)";
-          tr.style.background = color;
-        });
-      }
-      function renderGeo() {
-        const data = M.geo_sales_data;
-        const totals = data.reduce(
-          (acc, d) => {
-            acc.clients += d.clients_count;
-            acc.leads += d.leads_count;
-            acc.spend += d.spend_total;
-            acc.revenue += d.revenue_total;
-            return acc;
-          },
-          { clients: 0, leads: 0, spend: 0, revenue: 0 },
-        );
 
-        const rows = [...data]
-          .sort((a, b) => b.revenue_total - a.revenue_total)
-          .map(
-            (d) => `
-              <tr class="border-b border-[var(--line)] last:border-0 hover:bg-[var(--bg)]">
-                <td class="py-3 px-4 font-medium" data-primary="true">${d.city} <span class="text-[var(--muted)] text-[0.78rem]">${d.province}</span></td>
-                <td class="py-3 px-4 text-[0.82rem] text-[var(--muted)]" data-label="Regione">${d.region}</td>
-                <td class="py-3 px-4 font-mono text-center" data-label="Clienti">${d.clients_count}</td>
-                <td class="py-3 px-4 font-mono text-center" data-label="Lead">${d.leads_count}</td>
-                <td class="py-3 px-4 font-mono" data-label="Spend">${euro(d.spend_total)}</td>
-                <td class="py-3 px-4 font-mono font-semibold" data-label="Revenue">${euro(d.revenue_total)}</td>
-                <td class="py-3 px-4 font-mono text-center" data-label="ROAS"><span class="chip ${d.roas >= 3 ? "chip-green" : d.roas >= 2 ? "chip-yellow" : "chip-red"}">${d.roas.toFixed(2)}x</span></td>
-                <td class="py-3 px-4 font-mono text-center" data-label="CPL">€${d.cpl}</td>
-              </tr>
-            `,
-          )
-          .join("");
+      function __geoGoTo(level, extra) {
+        window.__geoState = Object.assign(window.__geoState, extra || {}, {
+          level,
+        });
+        renderGeo();
+      }
+
+      function renderGeo() {
+        const st = window.__geoState;
+        const isMobile =
+          typeof window.__isMobile === "function" && window.__isMobile();
+
+        // ---- Breadcrumb ----
+        let crumbs = "";
+        if (st.level === "regions") {
+          crumbs = `<span class="font-semibold">Italia</span>`;
+        } else if (st.level === "cities") {
+          crumbs = `<a href="#" onclick="event.preventDefault(); __geoGoTo('regions',{regionId:null,regionName:null,cityName:null});" class="text-[var(--teal)] hover:underline">Italia</a> <span class="text-[var(--muted)] mx-1">›</span> <span class="font-semibold">${st.regionName}</span>`;
+        } else {
+          crumbs = `<a href="#" onclick="event.preventDefault(); __geoGoTo('regions',{regionId:null,regionName:null,cityName:null});" class="text-[var(--teal)] hover:underline">Italia</a> <span class="text-[var(--muted)] mx-1">›</span> <a href="#" onclick="event.preventDefault(); __geoGoTo('cities',{cityName:null});" class="text-[var(--teal)] hover:underline">${st.regionName}</a> <span class="text-[var(--muted)] mx-1">›</span> <span class="font-semibold">${st.cityName}</span>`;
+        }
+
+        // ---- Back button (only when not at root) ----
+        let backBtn = "";
+        if (st.level === "cities") {
+          backBtn = `<button class="btn-secondary" onclick="__geoGoTo('regions',{regionId:null,regionName:null,cityName:null});"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;margin-right:6px;vertical-align:-2px"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Indietro</button>`;
+        } else if (st.level === "companies") {
+          backBtn = `<button class="btn-secondary" onclick="__geoGoTo('cities',{cityName:null});"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;margin-right:6px;vertical-align:-2px"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Indietro</button>`;
+        }
+
+        // ---- Metric toggle (always visible, affects region/city list & map) ----
+        const metricTabs = `<div class="pill-tabs" id="geo-metric-tabs">
+          <button class="pill-tab ${st.metric === "revenue" ? "active" : ""}" data-metric="revenue">Revenue</button>
+          <button class="pill-tab ${st.metric === "spend" ? "active" : ""}" data-metric="spend">Spend</button>
+          <button class="pill-tab ${st.metric === "leads" ? "active" : ""}" data-metric="leads">Lead</button>
+          <button class="pill-tab ${st.metric === "clients" ? "active" : ""}" data-metric="clients">Clienti</button>
+          <button class="pill-tab ${st.metric === "roas" ? "active" : ""}" data-metric="roas">ROAS</button>
+        </div>`;
+
+        // ---- Build body content per level ----
+        let kpisHtml = "";
+        let tableHtml = "";
+        let mapHtml = "";
+
+        if (st.level === "regions") {
+          const regions = [...(M.geo_regions || [])].sort((a, b) => {
+            const f = __geoMetricField(st.metric, "region");
+            return (b[f] || 0) - (a[f] || 0);
+          });
+          const totals = regions.reduce(
+            (acc, r) => {
+              acc.clients += r.clients_count;
+              acc.leads += r.leads_count;
+              acc.spend += r.spend_total;
+              acc.revenue += r.revenue_total;
+              return acc;
+            },
+            { clients: 0, leads: 0, spend: 0, revenue: 0 },
+          );
+          kpisHtml = `
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <div class="card p-5"><div class="eyebrow mb-1">Regioni attive</div><div class="display" style="font-size:2rem">${regions.length}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Clienti totali</div><div class="display" style="font-size:2rem">${totals.clients}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Spend</div><div class="display" style="font-size:2rem">${euro(totals.spend)}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Revenue</div><div class="display" style="font-size:2rem">${euro(totals.revenue)}</div><div class="text-[0.78rem] text-[var(--muted)]">ROAS medio ${(totals.revenue / Math.max(1, totals.spend)).toFixed(2)}x</div></div>
+            </div>
+          `;
+          mapHtml = `<div id="map" class="mb-8"></div>`;
+          const rows = regions
+            .map((r, idx) => {
+              const onclick = `__geoGoTo('cities',{regionId:'${r.id}',regionName:'${r.name.replace(/'/g, "\\'")}',cityName:null})`;
+              return `
+                <tr class="border-b border-[var(--line)] last:border-0 hover:bg-[var(--bg)] cursor-pointer" onclick="${onclick}">
+                  <td class="py-3 px-4 font-mono text-[var(--muted)] text-[0.78rem]" data-label="#">${idx + 1}</td>
+                  <td class="py-3 px-4 font-medium" data-primary="true">${r.name}</td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="Città">${r.cities_count}</td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="Clienti">${r.clients_count}</td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="Lead">${r.leads_count}</td>
+                  <td class="py-3 px-4 font-mono font-semibold" data-label="Revenue">${euro(r.revenue_total)}</td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="ROAS"><span class="chip ${r.roas >= 3 ? "chip-green" : r.roas >= 2 ? "chip-yellow" : "chip-red"}">${(r.roas || 0).toFixed(2)}x</span></td>
+                  <td class="py-3 px-4 text-right" data-label="Azione"><button class="btn-secondary" style="padding:6px 12px;font-size:0.78rem" onclick="event.stopPropagation(); ${onclick};">Apri regione →</button></td>
+                </tr>
+              `;
+            })
+            .join("");
+          tableHtml = `
+            <div class="card-lg overflow-hidden mobile-cards geo-cards">
+              <div class="p-6 border-b border-[var(--line)]"><div class="eyebrow mb-1">Regioni</div><div class="display-h2">Ranking per ${__geoMetricLabel(st.metric).toLowerCase()}</div></div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-[0.88rem]">
+                  <thead class="text-[var(--muted)] text-[0.7rem] uppercase tracking-wider border-b border-[var(--line-strong)]">
+                    <tr><th class="py-3 px-4 font-medium">#</th><th class="py-3 px-4 font-medium">Regione</th><th class="py-3 px-4 font-medium text-center">Città</th><th class="py-3 px-4 font-medium text-center">Clienti</th><th class="py-3 px-4 font-medium text-center">Lead</th><th class="py-3 px-4 font-medium">Revenue</th><th class="py-3 px-4 font-medium text-center">ROAS</th><th class="py-3 px-4"></th></tr>
+                  </thead>
+                  <tbody>${rows}</tbody>
+                </table>
+              </div>
+            </div>`;
+        } else if (st.level === "cities") {
+          const cities = (M.geo_sales_data || []).filter(
+            (c) => c.region === st.regionName,
+          );
+          const totals = cities.reduce(
+            (acc, c) => {
+              acc.clients += c.clients_count;
+              acc.leads += c.leads_count;
+              acc.spend += c.spend_total;
+              acc.revenue += c.revenue_total;
+              return acc;
+            },
+            { clients: 0, leads: 0, spend: 0, revenue: 0 },
+          );
+          kpisHtml = `
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <div class="card p-5"><div class="eyebrow mb-1">Città in ${st.regionName}</div><div class="display" style="font-size:2rem">${cities.length}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Clienti</div><div class="display" style="font-size:2rem">${totals.clients}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Spend</div><div class="display" style="font-size:2rem">${euro(totals.spend)}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Revenue</div><div class="display" style="font-size:2rem">${euro(totals.revenue)}</div><div class="text-[0.78rem] text-[var(--muted)]">ROAS medio ${(totals.revenue / Math.max(1, totals.spend)).toFixed(2)}x</div></div>
+            </div>
+          `;
+          mapHtml = `<div id="map" class="mb-8"></div>`;
+          const field = __geoMetricField(st.metric, "city");
+          const sortedCities = [...cities].sort(
+            (a, b) => (b[field] || 0) - (a[field] || 0),
+          );
+          const rows = sortedCities
+            .map((c, idx) => {
+              const onclick = `__geoGoTo('companies',{cityName:'${c.city.replace(/'/g, "\\'")}'})`;
+              return `
+                <tr class="border-b border-[var(--line)] last:border-0 hover:bg-[var(--bg)] cursor-pointer" onclick="${onclick}">
+                  <td class="py-3 px-4 font-mono text-[var(--muted)] text-[0.78rem]" data-label="#">${idx + 1}</td>
+                  <td class="py-3 px-4 font-medium" data-primary="true">${c.city} <span class="text-[var(--muted)] text-[0.78rem]">${c.province}</span></td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="Clienti">${c.clients_count}</td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="Lead">${c.leads_count}</td>
+                  <td class="py-3 px-4 font-mono" data-label="Spend">${euro(c.spend_total)}</td>
+                  <td class="py-3 px-4 font-mono font-semibold" data-label="Revenue">${euro(c.revenue_total)}</td>
+                  <td class="py-3 px-4 font-mono text-center" data-label="ROAS"><span class="chip ${c.roas >= 3 ? "chip-green" : c.roas >= 2 ? "chip-yellow" : "chip-red"}">${c.roas.toFixed(2)}x</span></td>
+                  <td class="py-3 px-4 text-right" data-label="Azione"><button class="btn-secondary" style="padding:6px 12px;font-size:0.78rem" onclick="event.stopPropagation(); ${onclick};">Apri città →</button></td>
+                </tr>`;
+            })
+            .join("");
+          const emptyState = cities.length
+            ? ""
+            : `<div class="p-8 text-center text-[var(--muted)]">Nessuna città con dati per questa regione.</div>`;
+          tableHtml = `
+            <div class="card-lg overflow-hidden mobile-cards geo-cards">
+              <div class="p-6 border-b border-[var(--line)]"><div class="eyebrow mb-1">Città · ${st.regionName}</div><div class="display-h2">Ranking per ${__geoMetricLabel(st.metric).toLowerCase()}</div></div>
+              ${emptyState}
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-[0.88rem]">
+                  <thead class="text-[var(--muted)] text-[0.7rem] uppercase tracking-wider border-b border-[var(--line-strong)]">
+                    <tr><th class="py-3 px-4 font-medium">#</th><th class="py-3 px-4 font-medium">Città</th><th class="py-3 px-4 font-medium text-center">Clienti</th><th class="py-3 px-4 font-medium text-center">Lead</th><th class="py-3 px-4 font-medium">Spend</th><th class="py-3 px-4 font-medium">Revenue</th><th class="py-3 px-4 font-medium text-center">ROAS</th><th class="py-3 px-4"></th></tr>
+                  </thead>
+                  <tbody>${rows}</tbody>
+                </table>
+              </div>
+            </div>`;
+        } else {
+          // companies
+          const companies = (M.geo_companies || []).filter(
+            (c) => c.city === st.cityName,
+          );
+          const totals = companies.reduce(
+            (acc, c) => {
+              acc.leads += c.lead_count || 0;
+              acc.revenue += c.revenue_total || 0;
+              return acc;
+            },
+            { leads: 0, revenue: 0 },
+          );
+          kpisHtml = `
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <div class="card p-5"><div class="eyebrow mb-1">Aziende · ${st.cityName}</div><div class="display" style="font-size:2rem">${companies.length}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Lead associati</div><div class="display" style="font-size:2rem">${totals.leads}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Revenue totale</div><div class="display" style="font-size:2rem">${euro(totals.revenue)}</div></div>
+              <div class="card p-5"><div class="eyebrow mb-1">Regione</div><div class="display-h2" style="font-size:1.3rem;margin-top:4px">${st.regionName}</div></div>
+            </div>
+          `;
+          mapHtml = ""; // hide map on companies level
+          const chipFor = (status) => {
+            const map = {
+              client: "chip chip-green",
+              prospect: "chip chip-yellow",
+              customer: "chip chip-green",
+              lost: "chip chip-red",
+            };
+            return map[status] || "chip chip-soft";
+          };
+          const rows = companies.length
+            ? companies
+                .map((co) => {
+                  const cs = (M.case_studies || []).find(
+                    (x) => x.region === co.region && x.sector === co.sector,
+                  );
+                  const csCell = cs
+                    ? `<a href="${cs.external_url}" target="_blank" rel="noopener" class="text-[var(--teal)] hover:underline inline-flex items-center gap-1" title="${cs.title.replace(/"/g, "&quot;")}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Caso studio</a>`
+                    : '<span class="text-[var(--muted)]">—</span>';
+                  return `
+                    <tr class="border-b border-[var(--line)] last:border-0 hover:bg-[var(--bg)]">
+                      <td class="py-3 px-4 font-medium" data-primary="true">${co.company_name}</td>
+                      <td class="py-3 px-4 text-[0.82rem] text-[var(--muted)]" data-label="Settore">${co.sector}</td>
+                      <td class="py-3 px-4" data-label="Stato"><span class="${chipFor(co.status)}">${co.status}</span></td>
+                      <td class="py-3 px-4 font-mono" data-label="Revenue">${euro(co.revenue_total || 0)}</td>
+                      <td class="py-3 px-4 font-mono text-center" data-label="Lead">${co.lead_count || 0}</td>
+                      <td class="py-3 px-4 text-[0.82rem] text-[var(--muted)]" data-label="Ultima interazione">${fmtDate(co.last_interaction_at)}</td>
+                      <td class="py-3 px-4" data-label="Caso studio">${csCell}</td>
+                    </tr>`;
+                })
+                .join("")
+            : "";
+          const emptyState = companies.length
+            ? ""
+            : `<div class="p-8 text-center text-[var(--muted)]">Nessuna azienda geo-localizzata per <strong>${st.cityName}</strong>.</div>`;
+          tableHtml = `
+            <div class="card-lg overflow-hidden mobile-cards geo-cards">
+              <div class="p-6 border-b border-[var(--line)]"><div class="eyebrow mb-1">Aziende · ${st.cityName}</div><div class="display-h2">Dettaglio account geo-localizzati</div></div>
+              ${emptyState}
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-[0.88rem]">
+                  <thead class="text-[var(--muted)] text-[0.7rem] uppercase tracking-wider border-b border-[var(--line-strong)]">
+                    <tr><th class="py-3 px-4 font-medium">Azienda</th><th class="py-3 px-4 font-medium">Settore</th><th class="py-3 px-4 font-medium">Stato</th><th class="py-3 px-4 font-medium">Revenue</th><th class="py-3 px-4 font-medium text-center">Lead</th><th class="py-3 px-4 font-medium">Ultima interazione</th><th class="py-3 px-4 font-medium">Caso studio</th></tr>
+                  </thead>
+                  <tbody>${rows}</tbody>
+                </table>
+              </div>
+            </div>`;
+        }
 
         document.getElementById("geo-content").innerHTML = `
               ${sectionHeader(
                 "Director view",
                 "Geo-Vendite Italia",
-                "20 città monitorate · heatmap delle metriche vendita.",
-                `<div class="pill-tabs" id="geo-metric-tabs">
-                <button class="pill-tab" data-metric="spend_total">Spend</button>
-                <button class="pill-tab" data-metric="leads_count">Lead</button>
-                <button class="pill-tab" data-metric="clients_count">Clienti</button>
-                <button class="pill-tab active" data-metric="revenue_total">Revenue</button>
-                <button class="pill-tab" data-metric="roas">ROAS</button>
-              </div>`,
+                "Drill-down regioni → città → aziende.",
+                metricTabs,
               )}
 
-              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div class="card p-5"><div class="eyebrow mb-1">Clienti totali</div><div class="display" style="font-size:2rem">${totals.clients}</div></div>
-                <div class="card p-5"><div class="eyebrow mb-1">Lead totali</div><div class="display" style="font-size:2rem">${totals.leads}</div></div>
-                <div class="card p-5"><div class="eyebrow mb-1">Spend</div><div class="display" style="font-size:2rem">${euro(totals.spend)}</div></div>
-                <div class="card p-5"><div class="eyebrow mb-1">Revenue</div><div class="display" style="font-size:2rem">${euro(totals.revenue)}</div><div class="text-[0.78rem] text-[var(--muted)]">ROAS medio ${(totals.revenue / totals.spend).toFixed(2)}x</div></div>
+              <div class="flex items-center gap-3 mb-5 flex-wrap">
+                ${backBtn}
+                <div class="text-[0.88rem]">${crumbs}</div>
               </div>
 
-              <div id="map" class="mb-8"></div>
-
-              <div class="card-lg overflow-hidden mobile-cards geo-cards">
-                <div class="p-6 border-b border-[var(--line)]"><div class="eyebrow mb-1">Dettaglio città</div><div class="display-h2">Ranking revenue</div></div>
-                <div class="overflow-x-auto">
-                  <table class="w-full text-left text-[0.88rem]">
-                    <thead class="text-[var(--muted)] text-[0.7rem] uppercase tracking-wider border-b border-[var(--line-strong)]">
-                      <tr><th class="py-3 px-4 font-medium">Città</th><th class="py-3 px-4 font-medium">Regione</th><th class="py-3 px-4 font-medium text-center">Clienti</th><th class="py-3 px-4 font-medium text-center">Lead</th><th class="py-3 px-4 font-medium">Spend</th><th class="py-3 px-4 font-medium">Revenue</th><th class="py-3 px-4 font-medium text-center">ROAS</th><th class="py-3 px-4 font-medium text-center">CPL</th></tr>
-                    </thead>
-                    <tbody>${rows}</tbody>
-                  </table>
-                </div>
-              </div>
+              ${kpisHtml}
+              ${mapHtml}
+              ${tableHtml}
             `;
 
+        // Wire metric tabs
         document
           .querySelectorAll("#geo-metric-tabs [data-metric]")
           .forEach((b) =>
             b.addEventListener("click", () => {
-              document
-                .querySelectorAll("#geo-metric-tabs .pill-tab")
-                .forEach((x) => x.classList.remove("active"));
-              b.classList.add("active");
-              __currentMetric = b.dataset.metric;
-              if (
-                typeof window.__isMobile === "function" &&
-                window.__isMobile()
-              ) {
-                // on mobile, recolor city cards based on metric
-                colorGeoCards(__currentMetric);
-              } else {
-                drawGeoMarkers(__currentMetric);
-              }
+              window.__geoState.metric = b.dataset.metric;
+              renderGeo();
             }),
           );
 
-        // Only init Leaflet on desktop
-        if (typeof window.__isMobile !== "function" || !window.__isMobile()) {
+        // Only init/refresh Leaflet on desktop and when a map container exists
+        if (!isMobile && document.getElementById("map")) {
           setTimeout(initGeoMap, 200);
-        } else {
-          colorGeoCards(__currentMetric);
         }
       }
 
