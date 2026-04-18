@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HireFast · Sales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f1ea;
+        --paper: #ffffff;
+        --ink: #0e101c;
+        --ink-60: rgba(14, 16, 28, 0.6);
+        --ink-40: rgba(14, 16, 28, 0.4);
+        --teal: #15515f;
+        --teal-soft: rgba(21, 81, 95, 0.08);
+        --orange: #f58a07;
+        --orange-light: #ffb347;
+        --orange-soft: rgba(245, 138, 7, 0.08);
+        --muted: #6b6862;
+        --line: rgba(14, 16, 28, 0.07);
+        --line-strong: rgba(14, 16, 28, 0.14);
+        --green: #15803d;
+        --yellow: #c97707;
+        --red: #b42318;
+      }
+      * {
+        -webkit-font-smoothing: antialiased;
+      }
+      html,
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 16px;
+      }
+      .font-serif {
+        font-family: "Instrument Serif", "Times New Roman", serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+      .font-mono {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+      }
+      .display {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        letter-spacing: -0.015em;
+        line-height: 1.02;
+      }
+      .display-h1 {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        letter-spacing: -0.015em;
+        line-height: 1;
+        font-size: 3rem;
+      }
+      .display-h2 {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        letter-spacing: -0.015em;
+        line-height: 1.05;
+        font-size: 2rem;
+      }
+      .eyebrow {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 2px 16px -8px rgba(14, 16, 28, 0.06);
+      }
+      .card-lg {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: 0 6px 30px -14px rgba(14, 16, 28, 0.08);
+      }
+      .card-plain {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: white;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition:
+          transform 0.15s,
+          box-shadow 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 48px;
+        cursor: pointer;
+        border: none;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 30px -12px rgba(14, 16, 28, 0.35);
+      }
+      .btn-orange {
+        background: linear-gradient(135deg, var(--orange), var(--orange-light));
+        color: white;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 48px;
+        box-shadow: 0 6px 22px -8px rgba(245, 138, 7, 0.55);
+        cursor: pointer;
+        border: none;
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--ink);
+        padding: 13px 24px;
+        border-radius: 999px;
+        font-weight: 500;
+        border: 1px solid var(--line-strong);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 48px;
+        cursor: pointer;
+      }
+      .btn-secondary:hover {
+        background: var(--paper);
+      }
+      .btn-ghost {
+        color: var(--teal);
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+      }
+      .btn-ghost:hover {
+        background: var(--teal-soft);
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      .chip-soft {
+        background: var(--teal-soft);
+        color: var(--teal);
+      }
+      .chip-ink {
+        background: rgba(14, 16, 28, 0.06);
+        color: var(--ink);
+      }
+      .chip-orange {
+        background: var(--orange-soft);
+        color: #a85c07;
+      }
+      .chip-green {
+        background: rgba(21, 128, 61, 0.1);
+        color: var(--green);
+      }
+      .chip-yellow {
+        background: rgba(201, 119, 7, 0.12);
+        color: var(--yellow);
+      }
+      .chip-red {
+        background: rgba(180, 35, 24, 0.1);
+        color: var(--red);
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        display: inline-block;
+      }
+      .avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.75rem;
+        background: var(--teal);
+        color: white;
+        width: 32px;
+        height: 32px;
+      }
+      .avatar-lg {
+        width: 48px;
+        height: 48px;
+        font-size: 0.95rem;
+      }
+      .divider-dash {
+        border-top: 1px dashed var(--line-strong);
+      }
+      .sidenav {
+        width: 272px;
+        height: 100vh;
+        background: var(--paper);
+        border-right: 1px solid var(--line);
+        padding: 18px 14px;
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        overflow-y: auto;
+      }
+      .sidenav::-webkit-scrollbar {
+        width: 6px;
+      }
+      .sidenav::-webkit-scrollbar-thumb {
+        background: var(--line-strong);
+        border-radius: 999px;
+      }
+      .sidenav-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        color: var(--ink);
+        font-weight: 500;
+        font-size: 0.92rem;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.15s;
+        text-decoration: none;
+      }
+      .sidenav-item:hover {
+        background: rgba(14, 16, 28, 0.04);
+      }
+      .sidenav-item.active {
+        background: var(--ink);
+        color: white;
+      }
+      .sidenav-item .badge {
+        margin-left: auto;
+        background: var(--orange);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-radius: 999px;
+      }
+      .sidenav-item .badge.badge-red {
+        background: var(--red);
+      }
+      .sidenav-item.active .badge {
+        background: white;
+        color: var(--ink);
+      }
+      .sidenav-section {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 16px 14px 6px;
+      }
+      .topbar {
+        height: 72px;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(245, 241, 234, 0.86);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(12px);
+      }
+      .search {
+        flex: 1;
+        max-width: 540px;
+        position: relative;
+      }
+      .search input {
+        width: 100%;
+        height: 46px;
+        padding: 0 14px 0 44px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        font-size: 0.92rem;
+        color: var(--ink);
+      }
+      .search input::placeholder {
+        color: var(--muted);
+      }
+      .search input:focus {
+        outline: 2px solid var(--teal-soft);
+        border-color: var(--teal);
+      }
+      .search svg {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+      }
+      .wf-section {
+        display: none;
+      }
+      .wf-section.active {
+        display: block;
+        animation: fadeUp 0.35s ease;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .pageshell {
+        padding: 40px 32px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+      .breadcrumb {
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .breadcrumb a {
+        color: var(--muted);
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--ink);
+      }
+      .breadcrumb .sep {
+        margin: 0 8px;
+        opacity: 0.4;
+      }
+      .ai-banner {
+        background: linear-gradient(
+          135deg,
+          rgba(21, 81, 95, 0.06),
+          rgba(245, 138, 7, 0.05)
+        );
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 20px 24px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .ai-sparkle {
+        flex-shrink: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: var(--ink);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ai-dock {
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        z-index: 50;
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 40px -10px rgba(14, 16, 28, 0.4);
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+        border: none;
+      }
+      .ai-dock:hover {
+        transform: scale(1.05);
+        background: var(--teal);
+      }
+      .pill-tabs {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        background: rgba(14, 16, 28, 0.05);
+        border-radius: 999px;
+        flex-wrap: wrap;
+      }
+      .pill-tab {
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: var(--muted);
+        cursor: pointer;
+        border: none;
+        background: transparent;
+      }
+      .pill-tab.active {
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: 0 1px 4px rgba(14, 16, 28, 0.08);
+      }
+      .pbar {
+        height: 6px;
+        border-radius: 999px;
+        background: var(--line);
+        overflow: hidden;
+      }
+      .pbar > div {
+        height: 100%;
+        border-radius: 999px;
+      }
+      .hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        color: var(--muted);
+        background: rgba(14, 16, 28, 0.04);
+        padding: 6px 10px;
+        border-radius: 10px;
+      }
+      .mobile-toggle {
+        display: none;
+      }
+      .mobile-backdrop {
+        display: none;
+      }
+      .urgency-red {
+        border-left: 3px solid var(--red);
+      }
+      .urgency-yellow {
+        border-left: 3px solid var(--yellow);
+      }
+      .urgency-green {
+        border-left: 3px solid var(--green);
+      }
+      .urgency-orange {
+        border-left: 3px solid var(--orange);
+      }
+      /* Role toggle: nascondi voci Team quando ruolo != director */
+      body:not([data-role="director"]) .director-only {
+        display: none;
+      }
+      /* Role pill tabs container (posizionato sotto il logo) */
+      .role-toggle {
+        margin: 6px 4px 8px;
+        display: flex;
+        padding: 4px;
+        background: rgba(14, 16, 28, 0.05);
+        border-radius: 999px;
+      }
+      .role-toggle .pill-tab {
+        flex: 1;
+        text-align: center;
+        padding: 7px 10px;
+        font-size: 0.82rem;
+      }
+      /* AI Drawer (from dock) */
+      .ai-drawer {
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        z-index: 60;
+        width: min(420px, calc(100vw - 32px));
+        height: 560px;
+        background: var(--paper);
+        border-radius: 28px;
+        border: 1px solid var(--line);
+        box-shadow: 0 30px 80px -20px rgba(14, 16, 28, 0.28);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+      }
+      .ai-drawer.open {
+        display: flex;
+      }
+      .ai-drawer header {
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .ai-drawer .body {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .ai-drawer .footer {
+        border-top: 1px solid var(--line);
+        padding: 14px 16px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .ai-drawer input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 0.94rem;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(14, 16, 28, 0.05);
+      }
+      .ai-disclaimer {
+        font-size: 0.72rem;
+        color: var(--muted);
+        padding: 8px 20px 12px;
+        border-top: 1px dashed var(--line);
+        text-align: center;
+      }
+      .notif-dot {
+        position: absolute;
+        top: 8px;
+        right: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--red);
+        border: 2px solid var(--paper);
+      }
+      @media (max-width: 960px) {
+        .sidenav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 60;
+          transform: translateX(-100%);
+          transition: transform 0.3s;
+          box-shadow: 10px 0 40px rgba(14, 16, 28, 0.15);
+        }
+        .sidenav.open {
+          transform: translateX(0);
+        }
+        .mobile-toggle {
+          display: inline-flex;
+        }
+        .mobile-backdrop {
+          display: block;
+          position: fixed;
+          inset: 0;
+          background: rgba(14, 16, 28, 0.4);
+          z-index: 50;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s;
+        }
+        .mobile-backdrop.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .layout-root {
+          flex-direction: column;
+        }
+        .pageshell {
+          padding: 24px 18px;
+        }
+        .topbar {
+          padding: 0 16px;
+          height: 64px;
+        }
+        .search {
+          display: none;
+        }
+        .ai-dock,
+        .ai-drawer {
+          bottom: 16px;
+          right: 16px;
+        }
+        .display-h1 {
+          font-size: 2.2rem !important;
+        }
+        .display-h2 {
+          font-size: 1.6rem !important;
+        }
+      }
+    </style>
+  </head>
+  <body data-role="sales">
+    <div class="layout-root flex min-h-screen">
+      <!-- ========== SIDENAV ========== -->
+      <aside id="sidenav" class="sidenav">
+        <!-- Logo header -->
+        <div
+          class="flex items-center gap-3 px-2 pb-4 border-b border-[var(--line)] mb-2"
+        >
+          <div
+            class="w-10 h-10 rounded-xl bg-[var(--ink)] text-[var(--teal)] flex items-center justify-center font-serif"
+            style="font-size: 1.25rem; line-height: 1"
+          >
+            HF
+          </div>
+          <div>
+            <div class="text-[0.95rem] font-semibold leading-tight">
+              HireFast
+            </div>
+            <div class="text-[0.72rem] text-[var(--muted)]">Portale Sales</div>
+          </div>
+        </div>
+
+        <!-- Role toggle -->
+        <div class="role-toggle" role="tablist" aria-label="Cambio ruolo">
+          <button
+            type="button"
+            class="pill-tab active"
+            data-role="sales"
+            aria-selected="true"
+          >
+            Sales
+          </button>
+          <button
+            type="button"
+            class="pill-tab"
+            data-role="director"
+            aria-selected="false"
+          >
+            POD Director
+          </button>
+        </div>
+
+        <!-- ============== IL MIO LAVORO ============== -->
+        <div class="sidenav-section">Il mio lavoro</div>
+
+        <a class="sidenav-item active" data-wf="wf-oggi" href="#wf-oggi">
+          <!-- icon: home -->
+          <svg
+            id="icon-home"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 12l9-9 9 9" />
+            <path d="M5 10v10h14V10" />
+          </svg>
+          <span>Oggi</span><span class="badge">6</span>
+        </a>
+
+        <a class="sidenav-item" data-wf="wf-pipeline" href="#wf-pipeline">
+          <!-- icon: chart-bar -->
+          <svg
+            id="icon-chart-bar"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 20h18" />
+            <rect x="6" y="10" width="3" height="8" rx="1" />
+            <rect x="11" y="6" width="3" height="12" rx="1" />
+            <rect x="16" y="13" width="3" height="5" rx="1" />
+          </svg>
+          <span>Pipeline</span>
+        </a>
+
+        <a class="sidenav-item" data-wf="wf-lead" href="#wf-lead">
+          <!-- icon: user-group -->
+          <svg
+            id="icon-user-group"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="9" cy="8" r="3.5" />
+            <circle cx="17" cy="10" r="2.5" />
+            <path d="M3 20v-1.5a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4V20" />
+            <path d="M15 20v-1a3 3 0 0 1 3-3h1a2 2 0 0 1 2 2v2" />
+          </svg>
+          <span>Lead</span><span class="badge badge-red">3</span>
+        </a>
+
+        <a
+          class="sidenav-item"
+          data-wf="wf-ricerca-mercato"
+          href="#wf-ricerca-mercato"
+        >
+          <!-- icon: magnifying-glass -->
+          <svg
+            id="icon-magnifying-glass"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <span>Ricerca Mercato</span>
+        </a>
+
+        <a
+          class="sidenav-item"
+          data-wf="wf-appuntamenti"
+          href="#wf-appuntamenti"
+        >
+          <!-- icon: calendar -->
+          <svg
+            id="icon-calendar"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M3 9h18M8 3v4M16 3v4" />
+          </svg>
+          <span>Appuntamenti</span><span class="badge">2</span>
+        </a>
+
+        <a class="sidenav-item" data-wf="wf-preventivi" href="#wf-preventivi">
+          <!-- icon: document-text -->
+          <svg
+            id="icon-document-text"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 3h8l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+            />
+            <path d="M14 3v4h5" />
+            <path d="M8 12h8M8 16h8M8 8h4" />
+          </svg>
+          <span>Preventivi</span>
+        </a>
+
+        <a
+          class="sidenav-item"
+          data-wf="wf-conversazioni"
+          href="#wf-conversazioni"
+        >
+          <!-- icon: chat-bubble -->
+          <svg
+            id="icon-chat-bubble"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            />
+          </svg>
+          <span>Conversazioni</span><span class="badge badge-red">5</span>
+        </a>
+
+        <a class="sidenav-item" data-wf="wf-outreach" href="#wf-outreach">
+          <!-- icon: rocket-launch -->
+          <svg
+            id="icon-rocket-launch"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M14 4c4 0 6 2 6 6-1.5 0-3 .5-4 1.5L10 18l-3-3 6.5-6.5C14.5 7.5 14 5 14 4z"
+            />
+            <path d="M7 17l-3 3M4 14l2 2M8 20l2 2" />
+            <circle cx="16" cy="8" r="1.2" />
+          </svg>
+          <span>Outreach</span>
+        </a>
+
+        <!-- ============== TEAM (director only) ============== -->
+        <div class="sidenav-section director-only">Team</div>
+
+        <a
+          class="sidenav-item director-only"
+          data-wf="wf-performance-pod"
+          href="#wf-performance-pod"
+        >
+          <!-- icon: presentation-chart-line -->
+          <svg
+            id="icon-presentation-chart-line"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="4" width="18" height="12" rx="2" />
+            <path d="M7 12l3-3 3 2 4-5" />
+            <path d="M12 16v4M8 20h8" />
+          </svg>
+          <span>Performance POD</span>
+        </a>
+
+        <a
+          class="sidenav-item director-only"
+          data-wf="wf-provvigioni-pod"
+          href="#wf-provvigioni-pod"
+        >
+          <!-- icon: banknotes -->
+          <svg
+            id="icon-banknotes"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="7" width="20" height="12" rx="2" />
+            <circle cx="12" cy="13" r="2.5" />
+            <path d="M6 10.5v5M18 10.5v5" />
+          </svg>
+          <span>Provvigioni POD</span>
+        </a>
+
+        <a
+          class="sidenav-item director-only"
+          data-wf="wf-geo-vendite"
+          href="#wf-geo-vendite"
+        >
+          <!-- icon: map -->
+          <svg
+            id="icon-map"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z" />
+            <path d="M9 4v16M15 6v16" />
+          </svg>
+          <span>Geo-Vendite</span>
+        </a>
+
+        <!-- ============== STRUMENTI AI ============== -->
+        <div class="sidenav-section">Strumenti AI</div>
+
+        <a class="sidenav-item" data-wf="wf-ai-copilot" href="#wf-ai-copilot">
+          <!-- icon: sparkles -->
+          <svg
+            id="icon-sparkles"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 3l1.8 4.5L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.5z"
+            />
+            <path d="M19 16l.8 2L22 19l-2.2.9L19 22l-.8-2.1L16 19l2.2-1z" />
+          </svg>
+          <span>AI Copilot</span>
+        </a>
+
+        <a
+          class="sidenav-item"
+          data-wf="wf-generatore-email"
+          href="#wf-generatore-email"
+        >
+          <!-- icon: pencil-square -->
+          <svg
+            id="icon-pencil-square"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 20h4l10-10-4-4L4 16z" />
+            <path d="M14 6l4 4" />
+            <path d="M20 20h-6" />
+          </svg>
+          <span>Generatore email</span>
+        </a>
+
+        <div class="flex-1"></div>
+
+        <!-- ============== ALTRO ============== -->
+        <div class="sidenav-section">Altro</div>
+
+        <a
+          class="sidenav-item"
+          data-wf="wf-portale-cliente"
+          href="#wf-portale-cliente"
+        >
+          <!-- icon: window (portale cliente) -->
+          <svg
+            id="icon-window"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="4" width="18" height="16" rx="2" />
+            <path d="M3 9h18M7 4v16" />
+          </svg>
+          <span>Portale cliente</span>
+        </a>
+
+        <a class="sidenav-item" data-wf="wf-admin" href="#wf-admin">
+          <!-- icon: cog-6-tooth -->
+          <svg
+            id="icon-cog-6-tooth"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"
+            />
+          </svg>
+          <span>Admin</span>
+        </a>
+
+        <a class="sidenav-item" data-wf="wf-logout" href="#wf-logout">
+          <!-- icon: arrow-right-on-rectangle -->
+          <svg
+            id="icon-arrow-right-on-rectangle"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <path d="M16 17l5-5-5-5M21 12H9" />
+          </svg>
+          <span>Logout</span>
+        </a>
+
+        <!-- User card in fondo -->
+        <div
+          class="flex items-center gap-3 px-2 pt-4 mt-3 border-t border-[var(--line)]"
+        >
+          <div class="avatar">GP</div>
+          <div class="flex-1 min-w-0">
+            <div class="text-sm font-medium truncate">Gabriele Petteno</div>
+            <div class="text-xs text-[var(--muted)] truncate">
+              Sales · POD Nord
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div id="backdrop" class="mobile-backdrop"></div>
+
+      <div class="flex-1 min-w-0 flex flex-col">
+        <!-- ========== TOPBAR ========== -->
+        <div class="topbar">
+          <button
+            id="mobileToggle"
+            class="mobile-toggle w-10 h-10 rounded-full border border-[var(--line-strong)] items-center justify-center"
+            aria-label="Menu"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+
+          <div class="search">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              placeholder="Cerca un cliente, lead, deal… o chiedi in italiano"
+            />
+          </div>
+
+          <div class="flex items-center gap-3 ml-auto">
+            <span class="chip chip-green hidden md:inline-flex">
+              <span class="dot" style="background: var(--green)"></span>
+              Online
+            </span>
+
+            <button
+              class="w-10 h-10 rounded-full bg-[var(--paper)] border border-[var(--line)] flex items-center justify-center relative"
+              aria-label="Notifiche"
+              style="cursor: pointer"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              </svg>
+              <span class="notif-dot"></span>
+            </button>
+
+            <div class="avatar" title="Gabriele Petteno">GP</div>
+          </div>
+        </div>
+
+        <!-- ========== MAIN ========== -->
+        <main class="flex-1">
+          <section id="wf-oggi" class="wf-section active">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-pipeline" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-lead" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-ricerca-mercato" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-appuntamenti" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-preventivi" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-conversazioni" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-outreach" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-performance-pod" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-provvigioni-pod" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-geo-vendite" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-ai-copilot" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-generatore-email" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+
+          <section id="wf-admin" class="wf-section">
+            <div class="pageshell">
+              <!-- AGENT C POPULATES THIS -->
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ========== AI DOCK (floating button) ========== -->
+    <button
+      id="ai-dock-toggle"
+      class="ai-dock"
+      aria-label="Apri AI Copilot"
+      title="Chiedi all'AI (⌘+K)"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 2l1.8 4.5L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.5z" />
+        <circle cx="18" cy="18" r="2" />
+        <circle cx="5" cy="19" r="1.5" />
+      </svg>
+    </button>
+
+    <!-- ========== AI DRAWER ========== -->
+    <div id="ai-drawer" class="ai-drawer" role="dialog" aria-label="AI Copilot">
+      <header>
+        <div
+          class="ai-sparkle"
+          style="width: 32px; height: 32px; border-radius: 10px"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-sm font-semibold">AI Copilot</div>
+          <div class="text-xs text-[var(--muted)]">contesto sales</div>
+        </div>
+        <button
+          id="ai-drawer-close"
+          class="text-[var(--muted)]"
+          style="
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+          "
+          aria-label="Chiudi"
+        >
+          ×
+        </button>
+      </header>
+
+      <div class="body" id="ai-chat-body">
+        <!-- AGENT C POPULATES THIS: chat messages -->
+      </div>
+
+      <div class="footer">
+        <input placeholder="Chiedi in italiano…" aria-label="Messaggio" />
+        <button
+          class="btn-primary"
+          style="min-height: 40px; padding: 10px 16px; font-size: 0.85rem"
+        >
+          Chiedi
+        </button>
+      </div>
+
+      <div class="ai-disclaimer">Beta · contesto sales</div>
+    </div>
+
+    <!-- ========== JS ========== -->
+    <script>
+      (function () {
+        // ---- Workflow nav ----
+        const sections = document.querySelectorAll(".wf-section");
+        const navs = document.querySelectorAll(".sidenav-item[data-wf]");
+
+        function showWf(id) {
+          if (!id) return;
+          const target = document.getElementById(id);
+          if (!target) return;
+          sections.forEach((s) => s.classList.toggle("active", s.id === id));
+          navs.forEach((n) =>
+            n.classList.toggle("active", n.dataset.wf === id),
+          );
+          try {
+            history.replaceState(null, "", "#" + id);
+          } catch (_) {}
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          document.getElementById("sidenav")?.classList.remove("open");
+          document.getElementById("backdrop")?.classList.remove("open");
+        }
+
+        navs.forEach((n) =>
+          n.addEventListener("click", (e) => {
+            e.preventDefault();
+            showWf(n.dataset.wf);
+          }),
+        );
+
+        // ---- Role toggle (Sales / POD Director) ----
+        const roleBtns = document.querySelectorAll(".role-toggle [data-role]");
+        function setRole(role) {
+          if (!role) return;
+          document.body.dataset.role = role;
+          roleBtns.forEach((b) =>
+            b.classList.toggle("active", b.dataset.role === role),
+          );
+          // Se l'utente è sulla sezione director-only e passa a sales, torna a Oggi
+          const active = document.querySelector(".wf-section.active");
+          if (role === "sales" && active) {
+            const activeNav = document.querySelector(
+              '.sidenav-item[data-wf="' + active.id + '"]',
+            );
+            if (activeNav && activeNav.classList.contains("director-only")) {
+              showWf("wf-oggi");
+            }
+          }
+        }
+        roleBtns.forEach((b) =>
+          b.addEventListener("click", () => setRole(b.dataset.role)),
+        );
+
+        // ---- Mobile sidenav toggle ----
+        const mobileToggle = document.getElementById("mobileToggle");
+        const sidenav = document.getElementById("sidenav");
+        const backdrop = document.getElementById("backdrop");
+        mobileToggle?.addEventListener("click", () => {
+          sidenav?.classList.toggle("open");
+          backdrop?.classList.toggle("open");
+        });
+        backdrop?.addEventListener("click", () => {
+          sidenav?.classList.remove("open");
+          backdrop?.classList.remove("open");
+        });
+
+        // ---- AI drawer ----
+        const aiDrawer = document.getElementById("ai-drawer");
+        const aiDockToggle = document.getElementById("ai-dock-toggle");
+        const aiDrawerClose = document.getElementById("ai-drawer-close");
+
+        function toggleAiDrawer(forceState) {
+          if (!aiDrawer) return;
+          if (typeof forceState === "boolean") {
+            aiDrawer.classList.toggle("open", forceState);
+          } else {
+            aiDrawer.classList.toggle("open");
+          }
+        }
+        aiDockToggle?.addEventListener("click", () => toggleAiDrawer());
+        aiDrawerClose?.addEventListener("click", () => toggleAiDrawer(false));
+
+        // ---- Keyboard ----
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            toggleAiDrawer(false);
+          }
+          if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+            e.preventDefault();
+            toggleAiDrawer();
+          }
+        });
+
+        // ---- Initial state ----
+        const initial = (location.hash && location.hash.slice(1)) || "wf-oggi";
+        showWf(document.getElementById(initial) ? initial : "wf-oggi");
+
+        window.addEventListener("hashchange", () => {
+          const id = location.hash && location.hash.slice(1);
+          if (id && document.getElementById(id)) showWf(id);
+        });
+      })();
+    </script>
+  </body>
+</html>
